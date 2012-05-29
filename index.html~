@@ -10,7 +10,7 @@
     <script type="text/javascript" src="javascripts/extras/modernizr.js"></script>
     <script type="text/javascript" src="javascripts/extras/Three.js"></script>
     <script type="text/javascript" src="javascripts/extras/ColladaLoader.js"></script>
-    <script type="text/javascript" src="javascripts/extras/OBJLoader.js"></script>
+        <script type="text/javascript" src="javascripts/extras/OBJLoader.js"></script>
     <script type="text/javascript" src="javascripts/extras/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/extras/rightClick.js"></script>
     <script type="text/javascript" src="javascripts/extras/requestAnimationFrame.js"></script>
@@ -32,7 +32,6 @@
             <h2>A different interpretation of the awesome Vlambeer game.</h2>
       </header>
       <div id='gameCanvas'></div>
-	  <p id='devlog'>Added PointLight so COLLADA loads well and displays correctly, thanks to Mr.doob!</p>
-    </div>	
+    </div>
   </body>
 </html>
