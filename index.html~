@@ -12,7 +12,7 @@
     <script type="text/javascript" src="javascripts/extras/jquery.min.js"></script>
     <script type="text/javascript" src="javascripts/extras/requestAnimationFrame.js"></script>
     <script type="text/javascript" src="javascripts/game/mouse.js"></script>
-    <script type="text/javascript" src="models/threeDee.js"></script>
+    <script type="text/javascript" src="javascripts/game/threeDee.js"></script>
     <script type="text/javascript" src="javascripts/game/game.js"></script>
     <script type="text/javascript" src="javascripts/game/main.js"></script>
   </head>

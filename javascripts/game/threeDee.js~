@@ -103,7 +103,7 @@ particleLight = new THREE.Mesh( new THREE.SphereGeometry( 4, 8, 8 ), new THREE.M
 scene.add( particleLight );
 
 renderer = new THREE.WebGLRenderer();
-renderer.setSize( 600, 240 );
+renderer.setSize( 640, 240 );
 
 container.appendChild( renderer.domElement );
 }
