@@ -6,7 +6,7 @@ var dae, skin;
 
 var loader = new THREE.ColladaLoader();
 loader.options.convertUpAxis = true;
-loader.load( './models/env/redblock.dae', function colladaReady( collada ) {
+loader.load( './models/player/player.dae', function colladaReady( collada ) {
 
 dae = collada.scene;
 skin = collada.skins[ 0 ];
@@ -53,18 +53,18 @@ scene.add( line );
 
 scene.add( dae );
 
-var ambient = new THREE.AmbientLight( 0xffffff);
+var ambient = new THREE.AmbientLight( 0xC7C5C3);
 scene.add( ambient );
 
-var pointLight = new THREE.PointLight ( 0xffffff );
+var pointLight = new THREE.PointLight ( 0xC7C5C3 );
 pointLight.position.x = 400;
 pointLight.position.y = 100;
 pointLight.position.z = 110;
 pointLight.intensity = 3;
 scene.add (pointLight);
 
-var pointLight2 = new THREE.PointLight ( 0xffffff );
-pointLight2.position.x = -10;
+var pointLight2 = new THREE.PointLight ( 0xC7C5C3 );
+pointLight2.position.x = -500;
 pointLight2.position.y = 1000;
 pointLight2.position.z = -110;
 scene.add (pointLight2);
@@ -102,6 +102,8 @@ camera.lookAt( scene.position );
 particleLight.position.x = Math.sin( timer * 4 ) * 3009;
 particleLight.position.y = Math.cos( timer * 5 ) * 4000;
 particleLight.position.z = Math.cos( timer * 4 ) * 3009;
+
+dae.position.x = Math.sin (timer) * 5;
 
 renderer.render( scene, camera );
 

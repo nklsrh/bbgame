@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.63.0 r46461</authoring_tool>
     </contributor>
-    <created>2012-05-28T11:53:36</created>
-    <modified>2012-05-28T11:53:36</modified>
+    <created>2012-05-29T20:59:20</created>
+    <modified>2012-05-29T20:59:20</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -95,9 +95,24 @@
       </extra>
     </light>
   </library_lights>
+  <library_images>
+    <image id="backwall_tex_png_001" name="backwall_tex_png_001">
+      <init_from>backwall_tex.png</init_from>
+    </image>
+  </library_images>
   <library_effects>
     <effect id="Material_001-effect">
       <profile_COMMON>
+        <newparam sid="backwall_tex_png_001-surface">
+          <surface type="2D">
+            <init_from>backwall_tex_png_001</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="backwall_tex_png_001-sampler">
+          <sampler2D>
+            <source>backwall_tex_png_001-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <phong>
             <emission>
@@ -107,7 +122,7 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <color sid="diffuse">0.64 0.112418 0 1</color>
+              <texture texture="backwall_tex_png_001-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
               <color sid="specular">0.5 0.5 0.5 1</color>
