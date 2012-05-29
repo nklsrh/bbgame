@@ -2,24 +2,37 @@ var container, stats;
 
 var camera, scene, renderer, objects;
 var particleLight, pointLight;
-var dae, skin;
+var env, env_skin;
+var player, player_skin;
 
 var loader = new THREE.ColladaLoader();
+
 loader.options.convertUpAxis = true;
-loader.load( './models/player/player.dae', function colladaReady( collada ) {
+loader.load( './models/env/cityblock.dae', function colladaReady( collada ) {
 
-dae = collada.scene;
-skin = collada.skins[ 0 ];
-dae.dynamic = true;
-dae.scale.x = dae.scale.y = dae.scale.z = 1;
-dae.updateMatrix();
-
-init();
-animate();
+env = collada.scene;
+env_skin = collada.skins[ 0 ];
+env.dynamic = true;
+env.scale.x = env.scale.y = env.scale.z = 1;
+env.updateMatrix();
 
 } );
 
-function SetupThree(){}
+loader.load( './models/player/player.dae', function colladasReady( asd ) {
+
+player = asd.scene;
+player_skin = asd.skins[ 0 ];
+player.dynamic = true;
+player.scale.x = player.scale.y = player.scale.z = 1;
+player.updateMatrix();
+
+} );
+
+function SetupThree(){
+init();
+animate();
+}
+
 function init() {
 
 container = document.getElementById ('gameCanvas');
@@ -51,15 +64,16 @@ scene.add( line );
 
 // Add the COLLADA
 
-scene.add( dae );
+scene.add( env );
+scene.add( player );
 
 var ambient = new THREE.AmbientLight( 0xC7C5C3);
 scene.add( ambient );
 
 var pointLight = new THREE.PointLight ( 0xC7C5C3 );
-pointLight.position.x = 400;
+pointLight.position.x = 100;
 pointLight.position.y = 100;
-pointLight.position.z = 110;
+pointLight.position.z = 700;
 pointLight.intensity = 3;
 scene.add (pointLight);
 
@@ -93,17 +107,17 @@ function render() {
 
 var timer = Date.now() * 0.0005;
 
-camera.position.x = Math.cos( timer ) * 10;
+camera.position.x = Math.cos( timer ) * 50;
 camera.position.y = 2;
-camera.position.z = Math.sin( timer ) * 10;
+//camera.position.z = Math.sin( timer ) * 10;
 
-camera.lookAt( scene.position );
+camera.lookAt( new THREE.Vector3( camera.position.x - 100, camera.position.y, camera.position.z ) );
 
 particleLight.position.x = Math.sin( timer * 4 ) * 3009;
 particleLight.position.y = Math.cos( timer * 5 ) * 4000;
 particleLight.position.z = Math.cos( timer * 4 ) * 3009;
 
-dae.position.x = Math.sin (timer) * 5;
+//dae.position.x = Math.sin (timer) * 5;
 
 renderer.render( scene, camera );
 
