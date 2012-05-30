@@ -1,10 +1,13 @@
 function Game(){
+
+  this.player = new Player();
+  
   this.Setup = function(){
     SetupThree();
-    game.StartNewGame();		
+    game.StartNewGame();	    
   }
   this.Update = function(){
-    game.UpdateGame();
+    game.UpdateGame();   
   }
   this.Draw = function(){	
     game.DrawGame();
@@ -13,10 +16,10 @@ function Game(){
 
   this.StartNewGame = function(){
     setupMouse();
-    setupKeyboard();
+    this.plyer.Setup();
   }
   this.UpdateGame = function(){
-
+    this.player.Update();
   }
   this.DrawGame = function(){
   }
