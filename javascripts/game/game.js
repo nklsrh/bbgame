@@ -1,9 +1,11 @@
 function Game(){
 
+  this.three = new ThreeDee();
   this.player = new Player();
   
   this.Setup = function(){
-    SetupThree();
+    //SetupThree();
+    this.three.Setup();
     game.StartNewGame();	    
   }
   this.Update = function(){
@@ -16,11 +18,12 @@ function Game(){
 
   this.StartNewGame = function(){
     setupMouse();
-    this.plyer.Setup();
+    this.player.Setup();
   }
   this.UpdateGame = function(){
     this.player.Update();
   }
   this.DrawGame = function(){
+    this.three.Draw();
   }
 }

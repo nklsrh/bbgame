@@ -4,7 +4,6 @@ function setupMouse(){
   window.addEventListener('mousemove', MouseMove, false);
   window.addEventListener('mousedown', MouseDown, false);
   window.addEventListener('mouseup', MouseUp, false);
-  window.addEventListener("mousewheel", Scroll, false);
 }
 
 

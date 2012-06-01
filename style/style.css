@@ -12,7 +12,7 @@ h1{
 
 canvas {
   background-color: #C7C5C3;
-  background-image: url('../textures/envmap.jpg');
+  background-image: url('../assets/objects/env/cityblock/envmap.jpg');
   background-size: 100% 150%;
   width: 100%;
 }

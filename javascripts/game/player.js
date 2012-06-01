@@ -1,19 +1,17 @@
 function Player(){
-  this.x = 0;
-  this.y = 0;
-  this.z = 0;
-  
-  this.speed = 0;
+  this.position = new THREE.Vector3(0,0,0);
+  this.acceleration;
+  this.velocity;
   
   this.Setup = function(){
-	  this.x = 0;
-	  this.z = 0;
+    this.Reset();
   }
   this.Update = function(){
-    this.x += this.speed;    
-    
-    if(this.speed < 0.1){
-      this.speed += 0.002;
-    }
+  }
+  
+  this.Reset = function(){
+    this.position = new THREE.Vector3(0,0,0);
+    this.acceleration = new THREE.Vector3(0,0,0);
+    this.velocity = new THREE.Vector3(0,0,0);
   }
 }
