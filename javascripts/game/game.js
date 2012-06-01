@@ -1,11 +1,14 @@
 function Game(){
 
   this.three = new ThreeDee();
+  this.assets = new Assets();
   this.player = new Player();
+  this.env = new Environment();
   
   this.Setup = function(){
     //SetupThree();
     this.three.Setup();
+    this.env.Setup();
     game.StartNewGame();	    
   }
   this.Update = function(){
@@ -18,10 +21,9 @@ function Game(){
 
   this.StartNewGame = function(){
     setupMouse();
-    this.player.Setup();
   }
   this.UpdateGame = function(){
-    this.player.Update();
+    this.env.Update();
   }
   this.DrawGame = function(){
     this.three.Draw();

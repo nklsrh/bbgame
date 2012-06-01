@@ -11,6 +11,8 @@ function ThreeDee(){
   this.near = 1;
   this.far = 2000;
   
+  this.time = 0;
+  
   this.Setup = function(){
     this.canvas = document.getElementById('gameCanvas');
     this.scene = new THREE.Scene();
@@ -32,7 +34,10 @@ function ThreeDee(){
   }
   
   this.Draw = function(){
-    this.renderer.render(this.scene, this.camera );
+    this.time++;
+    this.SetCameraPosition(Math.sin(this.time * 0.01), 10, -Math.cos(this.time * 0.01));
+    this.SetCameraLookAt(0,0,0);
+    this.renderer.render(this.scene, this.camera);
   }
   
   this.AddCamera = function(fov, aspect, near, far){

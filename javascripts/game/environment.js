@@ -3,12 +3,23 @@ function Environment() {
   this.TileTypes = {
 	}
   
-	this.Setup = function(acc, maxVel){
+  this.tiles = new Array();
+  this.tileCount = 0;
+  
+  this.stadiumModel;
+  this.stadiumPosition;
+  
+	this.Setup = function(){
+    for(x = 0; x < this.tileCount; x++){
+      this.tiles[x] = new Tile();
+      this.tiles[x].Setup(this, x);
+    }
 	}
 
-	this.Update = function(){                                       
-	}
-
-	this.Draw = function(ctx){		
+	this.Update = function(){     
+    for(x = 0; x < this.tileCount; x++){
+      this.tiles[x] = new Tile();
+      this.tiles[x].Update();
+    }
 	}
 }

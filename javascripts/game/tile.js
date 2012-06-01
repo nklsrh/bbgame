@@ -1,65 +1,40 @@
 function Tile() {
 
+  this.loader = new THREE.ColladaLoader();
+  this.model = new THREE.Object3D();
+  this.size;
+  this.modelIndex;
+  
+  this.type;
+  this.index;
+  this.rotation;
+  
+  this.hasPlayer = new Array();
+  
+  this.environment;
+  
 	this.Setup = function(ParentEnvironment, index){
-	}
+    this.environment = ParentEnvironment;
+    this.index = index;    
+  }
+  
+  this.loader.load("./assets/objects/env/tiles/tile.dae", this.SetTileModel = function(collada){
+    this.model = collada.scene;
+    this.model.scale.x = this.model.scale.y = this.model.scale.z = 1;
+    this.model.updateMatrix();
+    this.modelIndex = this.model.id;
+    game.three.scene.add(this.model);
+  });
 	
-	this.RandomizeType = function(){
-	}
-
 	this.Update = function(){
-	}
-	
-	this.Timer = function(){
-	}
-
-	this.TimerBlink = function(){
-	}
-	
-	this.ImpactPlayer = function(){
-	}
-	
-	this.ImpactBots = function(){
-	}
-	
-	this.ImpactBall = function(){
-	}
-	
-	this.KillPlayer = function(){
-	}
-	
-	this.Draw = function(ctx){
-	}
-
-	this.DrawTimer = function(ctx){
-	}
-	
-	this.ApplyColour = function(ctx){
-		//ctx.globalAlpha = this.Alpha;
+    this.model.position.x += 0.1;
 	}
 	
 	// SWEET LITTLE FUNCTIONS	//	
-	this.SetAsCurrentTile = function(){
-		this.HasPlayer = true;
+	this.SetAsCurrentTile = function(playerIndex){
+		this.hasPlayer[playerIndex] = true;
 	}
-	this.RemoveAsCurrentTile = function(){
-		this.HasPlayer = false;
-	}
-	
-	//equivalent functions for bots
-	this.SetAsCurrentBotTile = function(i){
-		this.HasBot[i - 1] = true;
-	}
-	
-	this.RemoveAsCurrentBotTile = function(i){
-		this.HasBot[i - 1] = false;
-	}
-	
-	//equivalent functions for the ball
-	this.SetAsCurrentBallTile = function(i){
-		this.HasBall = true;
-	}
-	
-	this.RemoveAsCurrentBallTile = function(i){
-		this.HasBall = false;
+	this.RemoveAsCurrentTile = function(playerIndex){
+		this.hasPlayer[playerIndex] = false;
 	}
 }
