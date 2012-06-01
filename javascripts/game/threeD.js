@@ -25,17 +25,17 @@ function ThreeDee(){
 
     this.SetAmbientLight(0xC7C5C3);
 
-    this.SetPointLight(0xC7C5C3, 100, 100, 700, 1);
+    this.SetPointLight(0xC7C5C3, 1000, 10000, 700, 3);
 
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(600, 240);
+    this.renderer.setSize(canvasWidth, canvasHeight);
 
     this.canvas.appendChild(this.renderer.domElement);
   }
   
   this.Draw = function(){
     this.time++;
-    this.SetCameraPosition(Math.sin(this.time * 0.01), 10, -Math.cos(this.time * 0.01));
+    this.SetCameraPosition(Math.sin(this.time * 0.01) * 10, Math.sin(this.time * 0.01) * 10, -Math.cos(this.time * 0.01) * 10);
     this.SetCameraLookAt(0,0,0);
     this.renderer.render(this.scene, this.camera);
   }

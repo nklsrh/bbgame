@@ -4,7 +4,7 @@ function Environment() {
 	}
   
   this.tiles = new Array();
-  this.tileCount = 0;
+  this.tileCount = 10;
   
   this.stadiumModel;
   this.stadiumPosition;
@@ -18,7 +18,6 @@ function Environment() {
 
 	this.Update = function(){     
     for(x = 0; x < this.tileCount; x++){
-      this.tiles[x] = new Tile();
       this.tiles[x].Update();
     }
 	}

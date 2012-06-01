@@ -11,3 +11,6 @@ function main(){
 }
 
 var FPS = 60;
+var scaling = 0.3;
+var canvasWidth = 1024 * scaling;
+var canvasHeight = 600 * scaling;

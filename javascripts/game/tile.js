@@ -19,8 +19,7 @@ function Tile() {
   }
   
   this.loader.load("./assets/objects/env/tiles/tile.dae", this.SetTileModel = function(collada){
-    this.model = collada.scene;
-    this.model.scale.x = this.model.scale.y = this.model.scale.z = 1;
+    this.model = collada.scene;  
     this.model.updateMatrix();
     this.modelIndex = this.model.id;
     game.three.scene.add(this.model);
