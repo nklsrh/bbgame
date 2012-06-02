@@ -2,7 +2,7 @@ function Tile() {
 
   this.loader = new THREE.ColladaLoader();
   this.model = new THREE.Object3D();
-  this.size;
+  this.size = 2;
   this.modelIndex;
   
   this.type;
@@ -26,8 +26,10 @@ function Tile() {
   });
 	
 	this.Update = function(){
-    this.model.position.x += 0.1;
-	}
+    this.model = game.three.scene.__objects[2*this.index+1];
+    this.model.position.z = ("0"+this.index.toString())[("0"+this.index.toString()).length - 1] * this.size;
+    this.model.position.x = ("0"+this.index.toString())[("0"+this.index.toString()).length - 2] * this.size;
+  }
 	
 	// SWEET LITTLE FUNCTIONS	//	
 	this.SetAsCurrentTile = function(playerIndex){

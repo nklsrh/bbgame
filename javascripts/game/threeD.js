@@ -32,7 +32,7 @@ function ThreeDee(){
 
     this.canvas.appendChild(this.renderer.domElement);
   }
-  
+    
   this.Draw = function(){
     this.time++;
     this.SetCameraPosition(Math.sin(this.time * 0.01) * 10, Math.sin(this.time * 0.01) * 10, -Math.cos(this.time * 0.01) * 10);

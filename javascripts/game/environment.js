@@ -4,7 +4,7 @@ function Environment() {
 	}
   
   this.tiles = new Array();
-  this.tileCount = 10;
+  this.tileCount = NUMBER_OF_TILES;
   
   this.stadiumModel;
   this.stadiumPosition;
