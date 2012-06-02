@@ -1,7 +1,9 @@
+<<<<<<< HEAD
+var collada;
+
 function Tile() {
 
-  this.loader = new THREE.ColladaLoader();
-  this.model = new THREE.Object3D();
+  this.position = new THREE.Vector3();
   this.size;
   this.modelIndex;
   
@@ -16,18 +18,10 @@ function Tile() {
 	this.Setup = function(ParentEnvironment, index){
     this.environment = ParentEnvironment;
     this.index = index;    
-  }
-  
-  this.loader.load("./assets/objects/env/tiles/tile.dae", this.SetTileModel = function(collada){
-    this.model = collada.scene;
-    this.model.scale.x = this.model.scale.y = this.model.scale.z = 1;
-    this.model.updateMatrix();
-    this.modelIndex = this.model.id;
-    game.three.scene.add(this.model);
-  });
-	
+    this.position.x = index * 0.05;
+  } 
+
 	this.Update = function(){
-    this.model.position.x += 0.1;
 	}
 	
 	// SWEET LITTLE FUNCTIONS	//	
@@ -38,3 +32,38 @@ function Tile() {
 		this.hasPlayer[playerIndex] = false;
 	}
 }
+=======
+var collada;
+
+function Tile() {
+
+  this.position = new THREE.Vector3();
+  this.size;
+  this.modelIndex;
+  
+  this.type;
+  this.index;
+  this.rotation;
+  
+  this.hasPlayer = new Array();
+  
+  this.environment;
+  
+	this.Setup = function(ParentEnvironment, index){
+    this.environment = ParentEnvironment;
+    this.index = index;    
+    this.position.x = index * 0.05;
+  } 
+
+	this.Update = function(){
+	}
+	
+	// SWEET LITTLE FUNCTIONS	//	
+	this.SetAsCurrentTile = function(playerIndex){
+		this.hasPlayer[playerIndex] = true;
+	}
+	this.RemoveAsCurrentTile = function(playerIndex){
+		this.hasPlayer[playerIndex] = false;
+	}
+}
+>>>>>>> be19f08c8de99ca574c5721030aca51f4f5c3ef5

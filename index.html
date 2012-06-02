@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
     <link rel="stylesheet" href="style/style.css"/>
-    <title>BLASTR:ARENA</title>
-
-    <script type="text/javascript" src="javascripts/extras/Three.js"></script>
-    <script type="text/javascript" src="javascripts/extras/ColladaLoader.js"></script>
-    <script type="text/javascript" src="javascripts/extras/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/extras/requestAnimationFrame.js"></script>
-    <script type="text/javascript" src="javascripts/game/mouse.js"></script>
-    <script type="text/javascript" src="javascripts/game/threeD.js"></script>
-    <script type="text/javascript" src="javascripts/game/assets.js"></script>
-    <script type="text/javascript" src="javascripts/game/game.js"></script>
-    <script type="text/javascript" src="javascripts/game/main.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0">
     
-    <script type="text/javascript" src="javascripts/game/GlaDOS.js"></script>
-    <script type="text/javascript" src="javascripts/game/player.js"></script>
-    <script type="text/javascript" src="javascripts/game/environment.js"></script>
-    <script type="text/javascript" src="javascripts/game/tile.js"></script>
+    <title>BLASTR:ARENA</title>
   </head>
 
   <body onload='main();'>
-    <div id='gameCanvas'></div>
+    <canvas id='canvas3D'></canvas>
   </body>
+  
+  <script type="text/javascript" src="javascripts/game/main.js"></script>
+  <script type="text/javascript" src="javascripts/extras/Three.js"></script>  
+  <script type="text/javascript" src="javascripts/extras/ColladaLoader.js"></script>  
+  <script type="text/javascript" src="javascripts/game/threeD.js"></script>
+  <script type="text/javascript" src="javascripts/extras/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/extras/requestAnimationFrame.js"></script>
+  <script type="text/javascript" src="javascripts/game/mouse.js"></script>
+  <script type="text/javascript" src="javascripts/game/game.js"></script>
+
+  <script type="text/javascript" src="javascripts/game/GlaDOS.js"></script>
+  <script type="text/javascript" src="javascripts/game/player.js"></script>
+  <script type="text/javascript" src="javascripts/game/environment.js"></script>
+  <script type="text/javascript" src="javascripts/game/tile.js"></script>
 </html>
