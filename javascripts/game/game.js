@@ -5,6 +5,7 @@ function Game(){
   
   this.Setup = function(){
     this.env.Setup();
+    THREE_Setup();
     game.StartNewGame();
   }
   this.Update = function(){
@@ -20,9 +21,11 @@ function Game(){
   }
   this.UpdateGame = function(){
     this.env.Update();
-    GLGE_Update();
+    THREE_Update();
   }
   this.DrawGame = function(){
-    GLGE_Render();
+    if(THREE_HasLoaded){
+      THREE_Draw();    
+    }
   }
 }

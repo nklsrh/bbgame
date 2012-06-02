@@ -31,7 +31,7 @@ function Environment() {
         this.tiles[x].Update();
       }
     }
-    if(GLGE_HasLoaded){
+    if(THREE_HasLoaded){
       this.SetupTiles();
     }
 	}
