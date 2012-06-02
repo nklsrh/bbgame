@@ -1,7 +1,7 @@
 function Player(){
   this.position = new THREE.Vector3(0,0,0);
-  this.acceleration;
-  this.velocity;
+  this.acceleration = new THREE.Vector3(0,0,0);
+  this.velocity = new THREE.Vector3(0,0,0);
   
   this.Setup = function(){
     this.Reset();

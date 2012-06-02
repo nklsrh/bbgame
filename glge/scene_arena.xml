@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<glge>
+	<camera id="maincamera" loc_y="0" loc_x="100" loc_z="0" rot_order="ROT_XYZ" xtype="C_PERSPECTIVE" rot_z="0" rot_x="0.2" rot_y="0" />
+
+	<scene id="mainscene" camera="#maincamera" ambient_color="#fff">
+		<collada document="arena.dae" id="arena" loc_z = "0" rot_z = "0" scale="1" />
+		
+		<collada document="tile.dae" id="0" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="1" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="2" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="3" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="4" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="5" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="6" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="7" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="8" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="9" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="10" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="11" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="12" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="13" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="14" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="15" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="16" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="17" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="18" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="19" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="20" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="21" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="22" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="23" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="24" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="25" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="26" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="27" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="28" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="29" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="30" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="31" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="32" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="33" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="34" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="35" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="36" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="37" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="38" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="39" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="40" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="41" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="42" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="43" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="44" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="45" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="46" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="47" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="48" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="49" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="50" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="51" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="52" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="53" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="54" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="55" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="56" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="57" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="58" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="59" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="60" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="61" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="62" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="63" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="64" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="65" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="66" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="67" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="68" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="69" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="70" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="71" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="72" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="73" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="74" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="75" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="76" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="77" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="78" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="79" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="80" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="81" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="82" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="83" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="84" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="85" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="86" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="87" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="88" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="89" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="90" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="91" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="92" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="93" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="94" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="95" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="96" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="97" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="98" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		<collada document="tile.dae" id="99" loc_y="0.1" loc_x="0.1" loc_z="5.9" scale="1" />
+		
+		<collada document="player.dae" id="player" loc_z = "2000" rot_z = "0" scale="1" />
+		
+		<collada document="bombot.dae" id="bombot-0" loc_z = "2000" rot_z = "0" scale="1" />
+		<collada document="bombot.dae" id="bombot-1" loc_z = "2000" rot_z = "0" scale="1" />
+		
+		<collada document="bombot-calm.dae" id="bombot-calm-0" loc_z = "2000" rot_z = "0" scale="1" />
+		<collada document="bombot-calm.dae" id="bombot-calm-1" loc_z = "2000" rot_z = "0" scale="1" />
+		
+		<collada document="bombotspawn.dae" id="bombotspawn-0" loc_z = "5" rot_z = "0" scale="1" />
+		<collada document="bombotspawn.dae" id="bombotspawn-1" loc_z = "5" rot_z = "0" scale="1" />
+		<collada document="bombotspawn.dae" id="bombotspawn-2" loc_z = "5" rot_z = "0" scale="1" />
+		<collada document="bombotspawn.dae" id="bombotspawn-3" loc_z = "5" rot_z = "0" scale="1" />
+		
+		<collada document="ball.dae" id="ball" loc_z = "5" rot_z = "5" scale="1" />
+		
+		<collada document="blast.dae" id="blast" loc_z = "5" rot_z = "0" scale="1" />
+		<collada document="blast-orange.dae" id="blast_orange" loc_z = "5" rot_z = "0" scale="1" />
+		
+		<collada document="cursor.dae" id="cursor" loc_z = "5" rot_z = "0" scale="1" />
+		
+		<collada document="goal.dae" id="goal" scale="1" />
+		
+		<collada document="bombot-blast.dae" id="bombotblast-0" loc_z = "20" rot_z = "0" scale="1" />
+		<collada document="bombot-blast.dae" id="bombotblast-1" loc_z = "20" rot_z = "0" scale="1" />
+		
+		<collada document="v.dae" id="v" loc_z = "20" rot_z = "0" scale="1" />
+		
+		<light id="mainlight" loc_x="0" loc_y="-1000" loc_z="0"  attenuation_constant="0.87" type="L_POINT" />
+	</scene>
+</glge>

@@ -1,11 +1,9 @@
 function Game(){
 
-  this.three = new ThreeDee();
   this.player = new Player();
   this.env = new Environment();
   
   this.Setup = function(){
-    this.three.Setup();
     this.env.Setup();
     game.StartNewGame();
   }
@@ -22,8 +20,9 @@ function Game(){
   }
   this.UpdateGame = function(){
     this.env.Update();
+    GLGE_Update();
   }
   this.DrawGame = function(){
-    this.three.Draw();
+    GLGE_Render();
   }
 }

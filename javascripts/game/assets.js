@@ -5,7 +5,7 @@
   
   for(i = 0; i < NUMBER_OF_TILES; i++){
     colloader.load("./assets/objects/env/tiles/tile.dae", function(collada){
-      tileModels[i] = new THREE.Object3D();
+      tileModels[i] = new THREE.Mesh();
       tileModels[i] = collada.scene;
       game.three.scene.add(tileModels[i]); 
     });

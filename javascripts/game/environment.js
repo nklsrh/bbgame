@@ -31,7 +31,7 @@ function Environment() {
         this.tiles[x].Update();
       }
     }
-    if(tileColladaLoaded){
+    if(GLGE_HasLoaded){
       this.SetupTiles();
     }
 	}
