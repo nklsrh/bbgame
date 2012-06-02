@@ -1,6 +1,4 @@
 //COPYRIGHT 2012 NIKHIL SURESH
-var gameCanvas, ctx;
-
 function main(){
 
 	game = new Game();
@@ -11,3 +9,13 @@ function main(){
 }
 
 var FPS = 60;
+var SCALING = 0.3;
+var CANVAS_WIDTH = 1024 * SCALING;
+var CANVAS_HEIGHT = 600 * SCALING;
+
+var NUMBER_OF_TILES = 100;
+
+var gameCanvas, ctx;
+gameCanvas = document.getElementById("canvas3D");
+gameCanvas.width = CANVAS_WIDTH;
+gameCanvas.height = CANVAS_HEIGHT;
