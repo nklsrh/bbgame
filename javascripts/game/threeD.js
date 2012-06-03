@@ -13,6 +13,8 @@ function ThreeDee(){
   
   this.time = 0;
   
+  this.focusPoint = new THREE.Vector3(0,0,0);
+  
   this.Setup = function(){
     this.canvas = document.getElementById('gameCanvas');
     this.scene = new THREE.Scene();
@@ -25,7 +27,7 @@ function ThreeDee(){
 
     this.SetAmbientLight(0xC7C5C3);
 
-    this.SetPointLight(0xC7C5C3, 1000, 10000, 700, 3);
+    this.SetPointLight(0xC7C5C3, 1000, 1000, 700, 1);
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(canvasWidth, canvasHeight);
@@ -35,8 +37,8 @@ function ThreeDee(){
     
   this.Draw = function(){
     this.time++;
-    this.SetCameraPosition(Math.sin(this.time * 0.01) * 10, 40 + 40 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 10);
-    this.SetCameraLookAt(0,0,0);
+    this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 60 + 40 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
+    this.camera.lookAt(this.focusPoint);
     this.canvas.width = this.canvas.width;
     this.renderer.render(this.scene, this.camera);
   }

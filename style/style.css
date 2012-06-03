@@ -11,8 +11,8 @@ h1{
 }
 
 canvas {
-  background-color: #C7C5C3;
-  background-image: url('../assets/objects/env/cityblock/envmap.jpg');
+  background-color: #000;
+  /*background-image: url('../assets/objects/env/cityblock/envmap.jpg');*/
   background-size: 100% 150%;
   width: 100%;
 }

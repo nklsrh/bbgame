@@ -15,7 +15,7 @@ function Tile() {
 	this.Setup = function(ParentEnvironment, index){
     this.environment = ParentEnvironment;
     this.index = index;    
-    this.modelIndex = 2*this.index + game.env.modelIndex;
+    this.modelIndex = (2*this.index) + game.env.modelIndex + 2;
   }
   
   this.loader = new THREE.ColladaLoader();
@@ -27,8 +27,8 @@ function Tile() {
 	
 	this.Update = function(){
     this.model = game.three.scene.__objects[this.modelIndex];
-    this.model.position.z = ("0"+this.index.toString())[("0"+this.index.toString()).length - 1] * this.size;
-    this.model.position.x = ("0"+this.index.toString())[("0"+this.index.toString()).length - 2] * this.size;
+    this.model.position.z = ((this.index-(this.index%NUMBER_OF_ROWS))/(NUMBER_OF_ROWS)) * this.size;
+    this.model.position.x = (NUMBER_OF_ROWS - (this.index % NUMBER_OF_ROWS)) * this.size;
   }
 	
 	// SWEET LITTLE FUNCTIONS	//	

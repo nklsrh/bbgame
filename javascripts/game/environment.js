@@ -14,7 +14,7 @@ function Environment() {
     for(x = 0; x < this.tileCount; x++){      
       this.tiles[x] = new Tile();
       this.tiles[x].Setup(this, x);
-    }
+    }    
 	}
   
   this.loader = new THREE.ColladaLoader();
@@ -32,6 +32,10 @@ function Environment() {
       for(x = 0; x < this.tileCount; x++){
         this.tiles[x].Update();
       }
+      
+      game.three.focusPoint = this.model.position;
+      game.three.scene.__objects[this.modelIndex].position.x = Math.floor(NUMBER_OF_ROWS/1.5) * this.tiles[0].size;
+      game.three.scene.__objects[this.modelIndex].position.z = Math.floor(NUMBER_OF_ROWS/1.5) * this.tiles[0].size;
     }
 	}
   
