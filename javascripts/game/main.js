@@ -1,6 +1,4 @@
 //COPYRIGHT 2012 NIKHIL SURESH
-var gameCanvas, ctx;
-
 function main(){
 
 	game = new Game();
@@ -16,3 +14,4 @@ var canvasWidth = 1024 * scaling;
 var canvasHeight = 600 * scaling;
 
 var NUMBER_OF_TILES = 100;
+var TILE_SIZE = 2;

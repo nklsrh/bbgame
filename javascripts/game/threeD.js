@@ -21,7 +21,7 @@ function ThreeDee(){
     this.SetCameraPosition(10,10,10);
     this.SetCameraLookAt(0,0,0);
     // Grid
-    this.AddLinesOnGround();
+    //this.AddLinesOnGround();
 
     this.SetAmbientLight(0xC7C5C3);
 
@@ -35,8 +35,9 @@ function ThreeDee(){
     
   this.Draw = function(){
     this.time++;
-    this.SetCameraPosition(Math.sin(this.time * 0.01) * 10, Math.sin(this.time * 0.01) * 10, -Math.cos(this.time * 0.01) * 10);
+    this.SetCameraPosition(Math.sin(this.time * 0.01) * 10, 40 + 40 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 10);
     this.SetCameraLookAt(0,0,0);
+    this.canvas.width = this.canvas.width;
     this.renderer.render(this.scene, this.camera);
   }
   
