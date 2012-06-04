@@ -24,7 +24,7 @@ function Player(){
       }  
       this.position.x = (this.index % (NUMBER_OF_TEAMS/2)) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
       this.position.y = -Math.floor(this.index % NUMBER_OF_TEAMS/2) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
-      this.position.z = Math.abs(Math.sin(game.three.time * 0.1) * 5) + FLOOR;      
+      this.position.z = Math.abs(Math.sin(game.three.time * 0.01) * 5) + PLAYER_SIZE + FLOOR;      
       game.three.scene.__objects[this.modelIndex].position = this.position;      
     }
   }

@@ -21,12 +21,17 @@ function Tile() {
     this.index = index;    
     this.modelIndex = (2*this.index) + game.env.modelIndex + 2;    
     this.rotation.x = -90 * Math.PI/180;
+    
+    if(this.index == game.env.goalTile){
+      this.type = game.env.TileTypes.GOAL;
+    }
   }
 
 	this.Update = function(){
     if(TILES_LOADED){
       this.TypeRotate();
       this.AlignToGrid();
+      this.AlignHole();
       game.three.scene.__objects[this.modelIndex].position = this.position;   
       game.three.scene.__objects[this.modelIndex].rotation = this.rotation;   
     }
@@ -51,9 +56,20 @@ function Tile() {
       case game.env.TileTypes.HOLE:
         this.targetRotation = 90 * Math.PI / 180;
       break;
+      case game.env.TileTypes.GOAL:
+        this.targetRotation = 90 * Math.PI / 180;
+      break;
     }  
     this.rotation.y += (this.targetRotation - this.rotation.y)/5;
   }
+  
+  this.AlignHole = function(){
+    if(this.type == game.env.TileTypes.HOLE){
+      this.position.y += (-TILE_SIZE - this.position.y)/2;
+    } else {
+      this.position.y += (FLOOR - this.position.y)/1.5;
+    }
+  }  
 	
 	// SWEET LITTLE FUNCTIONS	//	
 	this.SetAsCurrentTile = function(playerIndex){

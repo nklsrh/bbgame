@@ -22,6 +22,7 @@ function Environment() {
   
 	this.Setup = function(){
     this.modelIndex = 0;
+    this.goalTile = (NUMBER_OF_TILES - 1)/2;
     for(x = 0; x < this.tileCount; x++){    
       this.tiles[x] = new Tile();        
       this.tiles[x].Setup(this, x);

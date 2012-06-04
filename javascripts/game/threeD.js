@@ -89,7 +89,7 @@ function ThreeDee(){
   
   this.Draw = function(){
     this.time++;
-    this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 30 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
+    this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 20 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
     this.camera.lookAt(this.focusPoint);
     this.canvas.width = this.canvas.width;
     this.renderer.render(this.scene, this.camera);
