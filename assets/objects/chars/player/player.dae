@@ -118,7 +118,7 @@
         <rotate sid="rotationZ">0 0 1 0</rotate>
         <rotate sid="rotationY">0 1 0 0</rotate>
         <rotate sid="rotationX">1 0 0 90.00004</rotate>
-        <scale sid="scale">0.7 0.7 0.7</scale>
+        <scale sid="scale">0.3 0.3 0.3</scale>
         <instance_geometry url="#Sphere_005-mesh">
           <bind_material>
             <technique_common>

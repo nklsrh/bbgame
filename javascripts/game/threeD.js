@@ -30,14 +30,66 @@ function ThreeDee(){
     this.SetPointLight(0xC7C5C3, 1000, 1000, 700, 1);
 
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(canvasWidth, canvasHeight);
+    this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
     this.canvas.appendChild(this.renderer.domElement);
+    
+    this.loader.load("./assets/objects/env/arena/arena.dae", game.three.ArenaModel);
+
   }
     
+  this.loader = new THREE.ColladaLoader();
+  
+  this.arenaModel;  
+  this.ArenaModel = function(collada){
+    this.arenaModel = new THREE.Object3D();
+    this.arenaModel = collada.scene;  
+    this.arenaModel.rotation.x = -90 * Math.PI/180;
+    this.arenaModel.updateMatrix();
+    this.arenaModel.name = "arena";
+    game.three.scene.add(this.arenaModel);         
+    ARENA_LOADED = true;
+    this.loader = new THREE.ColladaLoader();
+    this.loader.load("./assets/objects/env/tiles/tile.dae", game.three.TileModel);    
+  }
+  
+  this.tilesModel = [];
+  this.TileModel = function(collada){
+    this.tilesModel = [];
+    this.tilesModel[0] = new THREE.Object3D();
+    this.tilesModel[0] = collada.scene;  
+    this.tilesModel[0].rotation.x = -90 * Math.PI/180;
+    this.tilesModel[0].name = "tile" + 0;
+    game.three.scene.add(this.tilesModel[0]);
+    for(i = 1; i < NUMBER_OF_TILES; i++){
+      this.tilesModel[i] = THREE.SceneUtils.cloneObject(this.tilesModel[i-1]);
+      this.tilesModel[i].name = "tile" + i;
+      game.three.scene.add(this.tilesModel[i]);
+    }
+    TILES_LOADED = true;
+    this.loader = new THREE.ColladaLoader();
+    this.loader.load("./assets/objects/chars/player/player.dae", game.three.PlayerModel);
+  }
+  
+  this.playersModel = [];
+  this.PlayerModel = function(collada){
+    this.playersModel = [];
+    this.playersModel[0] = new THREE.Object3D();
+    this.playersModel[0] = collada.scene;  
+    this.playersModel[0].rotation.x = -90 * Math.PI/180;
+    this.playersModel[0].name = "player" + 0;
+    game.three.scene.add(this.playersModel[0]);
+    for(i = 1; i < NUMBER_OF_TEAMS; i++){
+      this.playersModel[i] = THREE.SceneUtils.cloneObject(this.playersModel[i-1]);
+      this.playersModel[i].name = "player" + i;
+      game.three.scene.add(this.playersModel[i]);
+    }
+    PLAYERS_LOADED = true;
+  }
+  
   this.Draw = function(){
     this.time++;
-    this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 60 + 40 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
+    this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 30 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
     this.camera.lookAt(this.focusPoint);
     this.canvas.width = this.canvas.width;
     this.renderer.render(this.scene, this.camera);

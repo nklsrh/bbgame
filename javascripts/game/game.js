@@ -2,13 +2,14 @@ function Game(){
 
   this.three = new ThreeDee();
   this.assets = new Assets();
-  this.player = new Player();
+  this.glados = new Glados();
   this.env = new Environment();
   
   this.Setup = function(){
     //SetupThree();
     this.three.Setup();
     this.env.Setup();
+    this.glados.Setup();
     game.StartNewGame();	    
   }
   this.Update = function(){
@@ -24,6 +25,7 @@ function Game(){
   }
   this.UpdateGame = function(){
     this.env.Update();
+    this.glados.Update();
   }
   this.DrawGame = function(){
     this.three.Draw();

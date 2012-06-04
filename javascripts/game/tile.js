@@ -3,9 +3,12 @@ function Tile() {
   this.size = 2;
   this.modelIndex;
   
-  this.model = new THREE.Object3D();
+  this.position = new THREE.Vector3(0,0,0);
+  this.rotation = new THREE.Vector3(0,0,0);
+  this.targetRotation = 0;
   
-  this.type;
+  this.hasModelLoaded = false;
+  this.type = game.env.TileTypes.NORMAL;
   this.index;
   
   this.hasPlayer = new Array();
@@ -13,22 +16,43 @@ function Tile() {
   this.environment;
   
 	this.Setup = function(ParentEnvironment, index){
+    NUMBER_OF_OBJECTS++;
     this.environment = ParentEnvironment;
     this.index = index;    
-    this.modelIndex = (2*this.index) + game.env.modelIndex + 2;
+    this.modelIndex = (2*this.index) + game.env.modelIndex + 2;    
+    this.rotation.x = -90 * Math.PI/180;
+  }
+
+	this.Update = function(){
+    if(TILES_LOADED){
+      this.TypeRotate();
+      this.AlignToGrid();
+      game.three.scene.__objects[this.modelIndex].position = this.position;   
+      game.three.scene.__objects[this.modelIndex].rotation = this.rotation;   
+    }
   }
   
-  this.loader = new THREE.ColladaLoader();
-  this.loader.load("./assets/objects/env/tiles/tile.dae", this.SetModel = function(collada){
-    this.model = collada.scene;  
-    this.model.rotation.x = -90 * Math.PI/180;
-    game.three.scene.add(this.model);
-  });
-	
-	this.Update = function(){
-    this.model = game.three.scene.__objects[this.modelIndex];
-    this.model.position.z = ((this.index-(this.index%NUMBER_OF_ROWS))/(NUMBER_OF_ROWS)) * this.size;
-    this.model.position.x = (NUMBER_OF_ROWS - (this.index % NUMBER_OF_ROWS)) * this.size;
+  this.AlignToGrid = function(){
+    this.position.z = (((this.index-(this.index % NUMBER_OF_ROWS))/(NUMBER_OF_ROWS)) * this.size);
+    this.position.x = ((NUMBER_OF_ROWS - (this.index % NUMBER_OF_ROWS)) * this.size) - this.size;
+  }
+  
+  this.TypeRotate = function(){
+    switch(this.type){
+      case game.env.TileTypes.NORMAL:
+        this.targetRotation = 0;
+      break;
+      case game.env.TileTypes.SAND:
+        this.targetRotation = 270 * Math.PI / 180;
+      break;
+      case game.env.TileTypes.GLASS:
+        this.targetRotation = Math.PI;
+      break;
+      case game.env.TileTypes.HOLE:
+        this.targetRotation = 90 * Math.PI / 180;
+      break;
+    }  
+    this.rotation.y += (this.targetRotation - this.rotation.y)/5;
   }
 	
 	// SWEET LITTLE FUNCTIONS	//	
