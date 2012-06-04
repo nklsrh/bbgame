@@ -1,10 +1,19 @@
 function Game(){
+
+  this.three = new ThreeDee();
+  this.assets = new Assets();
+  this.glados = new Glados();
+  this.env = new Environment();
+  
   this.Setup = function(){
-    SetupThree();
-    game.StartNewGame();		
+    //SetupThree();
+    this.three.Setup();
+    this.env.Setup();
+    this.glados.Setup();
+    game.StartNewGame();	    
   }
   this.Update = function(){
-    game.UpdateGame();
+    game.UpdateGame();   
   }
   this.Draw = function(){	
     game.DrawGame();
@@ -13,11 +22,12 @@ function Game(){
 
   this.StartNewGame = function(){
     setupMouse();
-    setupKeyboard();
   }
   this.UpdateGame = function(){
-
+    this.env.Update();
+    this.glados.Update();
   }
   this.DrawGame = function(){
+    this.three.Draw();
   }
 }
