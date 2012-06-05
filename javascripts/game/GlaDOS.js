@@ -6,7 +6,7 @@ function Glados() {
     for(x = 0; x < this.playerCount; x++){      
       this.players[x] = new Player();
       this.players[x].Setup(x);
-      if(x > 0){
+      if(x >= 0){
         this.players[x].isAI = true;
       }
     }  
