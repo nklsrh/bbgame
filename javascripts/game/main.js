@@ -9,7 +9,7 @@ function main(){
 }
 
 var FPS = 60;
-var SCALING = 0.4;
+var SCALING = 0.8;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
 
@@ -19,6 +19,7 @@ var TILE_SIZE = 2;
 
 var PLAYER_SIZE = 1.3;
 
+var MARGIN_OF_ERROR = 0.75;
 var FLOOR = TILE_SIZE;
 var PLAYER_GROUND_LEVEL = FLOOR + PLAYER_SIZE;
 var FRICTION = 0.7;
@@ -29,3 +30,5 @@ var NUMBER_OF_TEAMS = 4;
 var ARENA_LOADED = false;
 var TILES_LOADED = false;
 var PLAYERS_LOADED = false;
+
+var TILT_ACCELERATION = 0.03;

@@ -47,6 +47,8 @@ function Player(){
       this.UpdateIntelligence();
       this.Physics();
       this.UpdateBlast();
+      
+      
       this.position.z = PLAYER_GROUND_LEVEL;
       //this.position.z = Math.abs(Math.sin(game.three.time * 0.01) * 5) + PLAYER_SIZE + FLOOR;      
       game.three.scene.__objects[this.modelIndex].position = this.position;      
@@ -61,8 +63,24 @@ function Player(){
     if(this.isAI){
       this.UpdateBot();
     } else {
-      //this.UpdatePlayer();
+      this.UpdatePlayer();
+      game.three.focusPoint = new THREE.Vector3(this.position.x, this.position.z, -this.position.y);
     }    
+  }
+  
+  this.UpdatePlayer = function(){
+    if(mouseX > 0){      
+      this.Right(Math.abs(mouseX));
+    } 
+    if(mouseX < 0){      
+      this.Left(Math.abs(mouseX));
+    } 
+    if(mouseY > 0){      
+      this.Down(Math.abs(mouseY));
+    }  
+    if(mouseY < 0){      
+      this.Up(Math.abs(mouseY));
+    }      
   }
   
   this.UpdateBot = function(){
@@ -169,19 +187,19 @@ function Player(){
   }
   
   this.Up = function(weight){
-    this.acceleration.y += 0.1 * weight; 
+    this.acceleration.y += TILT_ACCELERATION * weight; 
   }
   
   this.Down = function(weight){
-    this.acceleration.y -= 0.1 * weight; 
+    this.acceleration.y -= TILT_ACCELERATION * weight; 
   }
   
   this.Left = function(weight){
-    this.acceleration.x -= 0.1 * weight; 
+    this.acceleration.x -= TILT_ACCELERATION * weight; 
   }
   
   this.Right = function(weight){
-    this.acceleration.x += 0.1 * weight; 
+    this.acceleration.x += TILT_ACCELERATION * weight; 
   }
   
   
@@ -198,20 +216,24 @@ function Player(){
     this.velocity.x += (0 - this.velocity.x) / 15;
     this.velocity.y += (0 - this.velocity.y) / 15;
     //this.acceleration = this.acceleration.multiplySelf(0.9);
-    //this.Fall();
+    this.Fall();
   }
   
   this.Fall = function(){
-    if(this.position.x < game.env.tiles[0].position.z - TILE_SIZE){
+    //LEFT
+    if(this.position.x < game.env.tiles[0].position.z - TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
-    if(this.position.x > game.env.tiles[game.env.tiles.length-1].position.z + TILE_SIZE){
+    //RIGHT
+    if(this.position.x > game.env.tiles[game.env.tiles.length-1].position.z + TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
-    if(this.position.y < -game.env.tiles[0].position.x + TILE_SIZE){
+    //BOTTOM
+    if(this.position.y < -game.env.tiles[0].position.x - TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
-    if(this.position.y > -game.env.tiles[game.env.tiles.length-1].position.x + TILE_SIZE){
+    //TOP
+    if(this.position.y > -game.env.tiles[game.env.tiles.length-1].position.x + TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
   }
@@ -223,6 +245,7 @@ function Player(){
     this.position.x = (this.index % (NUMBER_OF_TEAMS/2)) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
     this.position.y = -Math.floor(this.index % NUMBER_OF_TEAMS/2) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
     
+    game.three.cameraAngle = 0;
     this.hasReset = true;
   }
 }

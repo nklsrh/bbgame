@@ -27,7 +27,7 @@ function ThreeDee(){
 
     this.SetAmbientLight(0xC7C5C3);
 
-    this.SetPointLight(0xC7C5C3, 1000, 1000, 700, 1);
+    this.SetPointLight(0xC7C5C3, 100, 190, 70, 1);
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -89,11 +89,23 @@ function ThreeDee(){
   
   this.Draw = function(){
     this.time++;
-    this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 20 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
+    this.SetCameraAngle(this.cameraAngle);
     this.camera.lookAt(this.focusPoint);
     this.canvas.width = this.canvas.width;
     this.renderer.render(this.scene, this.camera);
   }
+  
+  this.cameraAngle = 1;
+  this.SetCameraAngle = function(angle){
+    switch(angle){
+      case 0:
+        this.SetCameraPosition(this.focusPoint.x, this.focusPoint.y + 12, this.focusPoint.z + 6);
+      break;
+      case 1:
+        this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 20 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
+      break;
+    }
+  }  
   
   this.AddCamera = function(fov, aspect, near, far){
     this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
