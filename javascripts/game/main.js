@@ -9,9 +9,11 @@ function main(){
 }
 
 var FPS = 60;
-var SCALING = 0.5;
+var SCALING = 0.7;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
+
+var GAME_SPEED = 2;
 
 var NUMBER_OF_ROWS = 7;
 var NUMBER_OF_TILES = NUMBER_OF_ROWS * NUMBER_OF_ROWS;

@@ -25,8 +25,8 @@ function Blast(){
   }
   
   this.Physics = function(){
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
+    this.position.x += this.velocity.x * GAME_SPEED;
+    this.position.y += this.velocity.y * GAME_SPEED;
   }
   
   this.Decay = function(){

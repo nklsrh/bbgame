@@ -187,19 +187,19 @@ function Player(){
   }
   
   this.Up = function(weight){
-    this.acceleration.y += TILT_ACCELERATION * weight; 
+    this.acceleration.y += TILT_ACCELERATION * weight * GAME_SPEED; 
   }
   
   this.Down = function(weight){
-    this.acceleration.y -= TILT_ACCELERATION * weight; 
+    this.acceleration.y -= TILT_ACCELERATION * weight * GAME_SPEED; 
   }
   
   this.Left = function(weight){
-    this.acceleration.x -= TILT_ACCELERATION * weight; 
+    this.acceleration.x -= TILT_ACCELERATION * weight * GAME_SPEED; 
   }
   
   this.Right = function(weight){
-    this.acceleration.x += TILT_ACCELERATION * weight; 
+    this.acceleration.x += TILT_ACCELERATION * weight * GAME_SPEED; 
   }
   
   
