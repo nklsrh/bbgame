@@ -4,12 +4,12 @@ function main(){
 	game = new Game();
 	game.Setup();
 	
-	setInterval(game.Update, 960/FPS);
+	//setInterval(game.Update, 960/FPS);
 	game.Draw();
 }
 
 var FPS = 60;
-var SCALING = 0.3;
+var SCALING = 0.5;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
 
@@ -25,7 +25,7 @@ var PLAYER_GROUND_LEVEL = FLOOR + PLAYER_SIZE;
 var FRICTION = 0.7;
 
 var NUMBER_OF_OBJECTS = 0;
-var NUMBER_OF_TEAMS = 4;
+var NUMBER_OF_TEAMS = 3;
 
 var ARENA_LOADED = false;
 var TILES_LOADED = false;

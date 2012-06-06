@@ -16,6 +16,7 @@ function Game(){
     game.UpdateGame();   
   }
   this.Draw = function(){	
+    game.Update();
     game.DrawGame();
     requestAnimationFrame(game.Draw);		
   }

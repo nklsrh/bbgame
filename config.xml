@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" 
    xmlns:rim="http://www.blackberry.com/ns/widgets" 
-   version="0.0.4.44" rim:header="BLASTR:ARENA">
+   version="0.0.4.50" rim:header="BLASTR:ARENA">
 
-   <name>BLASTR:ARENA</name>
-   <description>Blast your way past other teams in your attempt to be champion.</description>
-   <content src="index.html"/>
-
+  <name>BLASTR:ARENA</name>
+  <description>Blast your way past other teams in your attempt to be champion.</description>
+  <content src="index.html"/>
+  <rim:orientation mode="landscape"/>
+  <author rim:copyright="2012">Nikhil Suresh</author>
+  <feature id="blackberry.custom.audio" required="true" version="1.0.0.0" />
+  <feature id="blackberry.custom.accelerometer" required="true" version="1.0.0.0" />
+  <icon src="./assets/promo/bots-42.png"/>
 </widget>
