@@ -9,7 +9,7 @@ function main(){
 }
 
 var FPS = 60;
-var SCALING = 0.8;
+var SCALING = 0.3;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
 
