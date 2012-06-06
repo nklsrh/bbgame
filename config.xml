@@ -10,5 +10,5 @@
   <author rim:copyright="2012">Nikhil Suresh</author>
   <feature id="blackberry.custom.audio" required="true" version="1.0.0.0" />
   <feature id="blackberry.custom.accelerometer" required="true" version="1.0.0.0" />
-  <icon src="./assets/promo/bots-42.png"/>
+  <icon src="assets/promo/bots-42.png"/>
 </widget>
