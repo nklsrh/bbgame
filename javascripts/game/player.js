@@ -215,6 +215,9 @@ function Player(){
     
     this.velocity.x += (0 - this.velocity.x) / 15;
     this.velocity.z += (0 - this.velocity.z) / 15;
+    
+    game.three.scene.__objects[this.modelIndex].rotation.z += this.velocity.x * GAME_SPEED;
+    game.three.scene.__objects[this.modelIndex].rotation.x += this.velocity.z * GAME_SPEED;
     //this.acceleration = this.acceleration.multiplySelf(0.9);
     this.Fall();
   }
