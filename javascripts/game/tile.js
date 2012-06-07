@@ -19,7 +19,7 @@ function Tile() {
     NUMBER_OF_OBJECTS++;
     this.environment = ParentEnvironment;
     this.index = index;    
-    this.modelIndex = (2*this.index) + game.env.modelIndex + 2;    
+    this.modelIndex = (this.index) + NUMBER_OF_ARENA_OBJECTS;    
     this.rotation.x = -90 * Math.PI/180;
     
     if(this.index == game.env.goalTile){
@@ -38,8 +38,8 @@ function Tile() {
   }
   
   this.AlignToGrid = function(){
-    this.position.z = (((this.index-(this.index % NUMBER_OF_ROWS))/(NUMBER_OF_ROWS)) * this.size);
-    this.position.x = ((NUMBER_OF_ROWS - (this.index % NUMBER_OF_ROWS)) * this.size) - this.size;
+    this.position.x = (((this.index-(this.index % NUMBER_OF_ROWS))/(NUMBER_OF_ROWS)) * this.size);
+    this.position.z = ((NUMBER_OF_ROWS - (this.index % NUMBER_OF_ROWS)) * this.size) - this.size;
   }
   
   this.TypeRotate = function(){

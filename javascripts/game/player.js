@@ -26,10 +26,10 @@ function Player(){
   
   this.LoadNew = function(index){
     this.index = index;
-    this.modelIndex = ((2*NUMBER_OF_TILES) + game.env.modelIndex + 2) + (index*2) + 1;
-    this.position.z = PLAYER_GROUND_LEVEL;  
+    this.modelIndex = NUMBER_OF_TILES + NUMBER_OF_ARENA_OBJECTS + index;
+    this.position.y = PLAYER_GROUND_LEVEL;  
     this.targetPosition.x = game.env.tiles[game.env.goalTile].position.x;
-    this.targetPosition.y = game.env.tiles[game.env.goalTile].position.z;
+    this.targetPosition.z = game.env.tiles[game.env.goalTile].position.z;
     
     this.aggression = 0.5;
     this.agility = 1 - (this.aggression * 0.05);    
@@ -49,8 +49,8 @@ function Player(){
       this.UpdateBlast();
       
       
-      this.position.z = PLAYER_GROUND_LEVEL;
-      //this.position.z = Math.abs(Math.sin(game.three.time * 0.01) * 5) + PLAYER_SIZE + FLOOR;      
+      this.position.y = PLAYER_GROUND_LEVEL;
+      //this.position.y = Math.abs(Math.sin(game.three.time * 0.01) * 5) + PLAYER_SIZE + FLOOR;      
       game.three.scene.__objects[this.modelIndex].position = this.position;      
     }
   }
@@ -64,7 +64,7 @@ function Player(){
       this.UpdateBot();
     } else {
       this.UpdatePlayer();
-      game.three.focusPoint = new THREE.Vector3(this.position.x, this.position.z, -this.position.y);
+      game.three.focusPoint = new THREE.Vector3(this.position.x, this.position.y, this.position.z);
     }    
   }
   
@@ -94,13 +94,13 @@ function Player(){
   this.aggression;
   
   this.Tracking = function(){  
-    this.targetPosition.x = game.env.tiles[game.env.goalTile].position.z;
-    this.targetPosition.y = -game.env.tiles[game.env.goalTile].position.x;
-    this.targetPosition.z = PLAYER_GROUND_LEVEL;
+    this.targetPosition.z = game.env.tiles[game.env.goalTile].position.z;
+    this.targetPosition.x = game.env.tiles[game.env.goalTile].position.x;
+    this.targetPosition.y = PLAYER_GROUND_LEVEL;
     
     this.directionToGoal.x = (this.targetPosition.x - this.position.x) * 0.65;
     this.directionToGoal.y = (this.targetPosition.y - this.position.y) * 0.65;
-    
+    this.directionToGoal.z = (this.targetPosition.z - this.position.z) * 0.65;
     //this.directionToGoal.x -= this.position.x;
     //this.directionToGoal.y -= this.position.y;
     
@@ -113,10 +113,10 @@ function Player(){
       if (this.directionToGoal.x < 0){
         this.Left(this.aggression);
       }
-      if (this.directionToGoal.y > 0){
+      if (this.directionToGoal.z < 0){
         this.Up(this.aggression);
       }
-      if (this.directionToGoal.y < 0){
+      if (this.directionToGoal.z > 0){
         this.Down(this.aggression);
       }
     }  
@@ -127,7 +127,7 @@ function Player(){
     if (this.chosenTarget < 0){
       for (i = 0; i < NUMBER_OF_TEAMS; i++){
         if (i != this.index){
-          var distance = Math.sqrt((game.glados.players[i].position.x - this.position.x)^2 + (game.glados.players[i].position.y - this.position.y)^2)
+          var distance = Math.sqrt((game.glados.players[i].position.x - this.position.x)^2 + (game.glados.players[i].position.z - this.position.z)^2)
           if (distance < PLAYER_SIZE){
             this.chosenTarget = i;
           } else {
@@ -145,7 +145,7 @@ function Player(){
   
   this.AttackTarget = function(target){
     this.blastDirection.x = game.glados.players[target].position.x - this.position.x;
-    this.blastDirection.y = game.glados.players[target].position.y - this.position.y;
+    this.blastDirection.z = game.glados.players[target].position.z - this.position.z;
     this.blastDirection.normalize();
     this.PrepBlast();
     
@@ -183,15 +183,15 @@ function Player(){
   
   this.BlastRecoil = function(){
     this.velocity.x = -this.blast.velocity.x * 0.2 * this.blast.strength;
-    this.velocity.y = -this.blast.velocity.y * 0.2 * this.blast.strength;
+    this.velocity.z = -this.blast.velocity.z * 0.2 * this.blast.strength;
   }
   
   this.Up = function(weight){
-    this.acceleration.y += TILT_ACCELERATION * weight * GAME_SPEED; 
+    this.acceleration.z -= TILT_ACCELERATION * weight * GAME_SPEED; 
   }
   
   this.Down = function(weight){
-    this.acceleration.y -= TILT_ACCELERATION * weight * GAME_SPEED; 
+    this.acceleration.z += TILT_ACCELERATION * weight * GAME_SPEED; 
   }
   
   this.Left = function(weight){
@@ -205,35 +205,35 @@ function Player(){
   
   this.Physics = function(){
     this.acceleration.x *= 0.2;
-    this.acceleration.y *= 0.2;
+    this.acceleration.z *= 0.2;
     this.velocity.x += this.acceleration.x;
-    this.velocity.y += this.acceleration.y;
+    this.velocity.z += this.acceleration.z;
     this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
+    this.position.z += this.velocity.z;
     //this.position = this.position.addSelf(this.velocity);
-    this.position.z = PLAYER_GROUND_LEVEL; 
+    this.position.y = PLAYER_GROUND_LEVEL; 
     
     this.velocity.x += (0 - this.velocity.x) / 15;
-    this.velocity.y += (0 - this.velocity.y) / 15;
+    this.velocity.z += (0 - this.velocity.z) / 15;
     //this.acceleration = this.acceleration.multiplySelf(0.9);
     this.Fall();
   }
   
   this.Fall = function(){
     //LEFT
-    if(this.position.x < game.env.tiles[0].position.z - TILE_SIZE * MARGIN_OF_ERROR){
+    if(this.position.x < game.env.tiles[0].position.x - TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
     //RIGHT
-    if(this.position.x > game.env.tiles[game.env.tiles.length-1].position.z + TILE_SIZE * MARGIN_OF_ERROR){
+    if(this.position.x > game.env.tiles[game.env.tiles.length-1].position.x + TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
     //BOTTOM
-    if(this.position.y < -game.env.tiles[0].position.x - TILE_SIZE * MARGIN_OF_ERROR){
+    if(this.position.z < game.env.tiles[game.env.tiles.length-1].position.z - TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
     //TOP
-    if(this.position.y > -game.env.tiles[game.env.tiles.length-1].position.x + TILE_SIZE * MARGIN_OF_ERROR){
+    if(this.position.z > game.env.tiles[0].position.z + TILE_SIZE * MARGIN_OF_ERROR){
       this.Reset();
     }
   }
@@ -243,7 +243,7 @@ function Player(){
     this.acceleration = new THREE.Vector3(0,0,0);
     this.velocity = new THREE.Vector3(0,0,0);
     this.position.x = (this.index % (NUMBER_OF_TEAMS/2)) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
-    this.position.y = -Math.floor(this.index % NUMBER_OF_TEAMS/2) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
+    this.position.z = Math.floor(this.index % NUMBER_OF_TEAMS/2) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
     
     game.three.cameraAngle = 0;
     this.hasReset = true;

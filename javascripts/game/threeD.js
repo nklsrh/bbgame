@@ -27,15 +27,15 @@ function ThreeDee(){
 
     this.SetAmbientLight(0xC7C5C3);
 
-    this.SetPointLight(0xC7C5C3, 100, 190, 70, 1);
+    this.SetPointLight(0xC7C5C3, 100, 190, 70, 0.2);
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
     this.canvas.appendChild(this.renderer.domElement);
     
-    this.loader.load("./assets/objects/env/arena/arena.dae", game.three.ArenaModel);
-
+    //this.loader.load("./assets/objects/env/arena/arena.dae", game.three.ArenaModel);
+    game.three.TileCubes();
   }
     
   this.loader = new THREE.ColladaLoader();
@@ -49,8 +49,21 @@ function ThreeDee(){
     this.arenaModel.name = "arena";
     game.three.scene.add(this.arenaModel);         
     ARENA_LOADED = true;
-    this.loader = new THREE.ColladaLoader();
-    this.loader.load("./assets/objects/env/tiles/tile.dae", game.three.TileModel);    
+    game.three.TileCubes();
+    //this.loader = new THREE.ColladaLoader();
+    //this.loader.load("./assets/objects/env/tiles/tile.dae", game.three.TileModel);    
+  }
+  
+  this.TileCubes = function(){
+    this.tilesModel = [];
+    this.tileMat = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+    for(i = 0; i < NUMBER_OF_TILES; i++){
+      this.tilesModel[i] = new THREE.Mesh(new THREE.CubeGeometry(2, 2, 2), this.tileMat);
+      this.tilesModel[i].name = "tile" + i;
+      game.three.scene.add(this.tilesModel[i]);
+    }
+    TILES_LOADED = true;
+    game.three.PlayerSpheres();
   }
   
   this.tilesModel = [];
@@ -67,8 +80,19 @@ function ThreeDee(){
       game.three.scene.add(this.tilesModel[i]);
     }
     TILES_LOADED = true;
-    this.loader = new THREE.ColladaLoader();
-    this.loader.load("./assets/objects/chars/player/player.dae", game.three.PlayerModel);
+    //this.loader = new THREE.ColladaLoader();
+    //this.loader.load("./assets/objects/chars/player/player.dae", game.three.PlayerModel);
+  }
+  
+  this.PlayerSpheres = function(){
+    this.playersModel = [];
+    this.playersMat = new THREE.MeshLambertMaterial({color: 0xFF4000});
+    for(i = 0; i < NUMBER_OF_TEAMS; i++){
+      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE - 1, 16, 16), this.playersMat);
+      this.playersModel[i].name = "players" + i;
+      game.three.scene.add(this.playersModel[i]);
+    }
+    PLAYERS_LOADED = true;
   }
   
   this.playersModel = [];
