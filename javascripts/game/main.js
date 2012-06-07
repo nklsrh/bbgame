@@ -13,7 +13,7 @@ var SCALING = 0.7;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
 
-var GAME_SPEED = 2;
+var GAME_SPEED = 1;
 
 var NUMBER_OF_ROWS = 7;
 var NUMBER_OF_TILES = NUMBER_OF_ROWS * NUMBER_OF_ROWS;
@@ -35,3 +35,13 @@ var TILES_LOADED = false;
 var PLAYERS_LOADED = false;
 
 var TILT_ACCELERATION = 0.03;
+
+var browser = navigator.userAgent;
+// Are we running in a PlayBook browser?
+if (browser.indexOf("PlayBook") > -1) {
+  // Are we running in WebWorks
+  if (typeof blackberry != 'undefined') {
+      GAME_SPEED = 4;
+      blackberry.custom.accelerometer.startAccelerometer();
+  }
+}
