@@ -5,9 +5,10 @@ var ACCELEROMETER_SENSITIVITY = 8.0;
 
 function setupMouse(){
   if (DEVICE == "PB"){
-    blackberry.custom.accelerometer.startAccelerometer();
+    initDeviceMotionEvent();
+    window.addEventListener("devicemotion", setupAccelerometer, false);
   }  
-  if(DEVICE == "PC" || DEVICE == "PB-Browser"){
+  if(DEVICE == "PC"){
     window.addEventListener('mousemove', MouseMove, false);
     window.addEventListener('mousedown', MouseDown, false);
     window.addEventListener('mouseup', MouseUp, false);

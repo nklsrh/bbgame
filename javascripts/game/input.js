@@ -2,9 +2,14 @@
 var movementInputX, movementInputY;
 var blastInputX, blastInputY;
 
+var accelerometerEvents;
+function setupAccelerometer(event){
+  accelerometerEvents = event;
+}
+
 function PlayerAccelerometerInput(){
-  movementInputX = clamp(ACCELEROMETER_SENSITIVITY * blackberry.custom.accelerometer.getAccelX(), -1, 1);
-  movementInputY = clamp(ACCELEROMETER_SENSITIVITY * blackberry.custom.accelerometer.getAccelY(), -1, 1);
+  movementInputX = clamp(ACCELEROMETER_SENSITIVITY * accelerometerEvents.accelerationIncludingGravity.x, -1, 1);
+  movementInputY = clamp(ACCELEROMETER_SENSITIVITY * accelerometerEvents.accelerationIncludingGravity.y, -1, 1);
 }
 
 function PlayerMouseInput(e){
