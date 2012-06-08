@@ -37,11 +37,11 @@ var TILT_ACCELERATION = 0.03;
 var DEVICE = "PC";
 var browser = navigator.userAgent;
 // Are we running in a PlayBook browser?
-if (browser.indexOf("PlayBook") > -1) {
+if (browser.indexOf("PlayBook") > -1 || browser.indexOf("Blackberry") > -1) {
   // Are we running in WebWorks
-  if (typeof blackberry != 'undefined') {
-    DEVICE = "PB";
-  }
+  DEVICE = "PB";
+} else {
+  DEVICE = "PC";
 }
 
 var GAME_SPEED = 1;
