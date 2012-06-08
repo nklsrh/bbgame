@@ -34,7 +34,7 @@ var PLAYERS_LOADED = false;
 
 var TILT_ACCELERATION = 0.03;
 
-var DEVICE = "PC";
+var DEVICE = "PB";
 var browser = navigator.userAgent;
 // Are we running in a PlayBook browser?
 if (browser.indexOf("PlayBook") > -1) {
@@ -45,14 +45,6 @@ if (browser.indexOf("PlayBook") > -1) {
 }
 
 var GAME_SPEED = 1;
-
-if(DEVICE == "PB"){
-  GAME_SPEED = 1;
-} else {
-  if(DEVICE == "PC"){
-    GAME_SPEED = 1;
-  }
-}
 
 
 
