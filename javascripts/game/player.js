@@ -47,9 +47,6 @@ function Player(){
       this.UpdateIntelligence();
       this.Physics();
       this.UpdateBlast();
-      
-      
-      this.position.y = PLAYER_GROUND_LEVEL;
       //this.position.y = Math.abs(Math.sin(game.three.time * 0.01) * 5) + PLAYER_SIZE + FLOOR;      
       game.three.scene.__objects[this.modelIndex].position = this.position;      
     }
@@ -64,7 +61,7 @@ function Player(){
       this.UpdateBot();
     } else {
       this.UpdatePlayer();
-      game.three.focusPoint = new THREE.Vector3(this.position.x, this.position.y, this.position.z);
+      game.three.focusPoint = new THREE.Vector3(this.position.x, PLAYER_GROUND_LEVEL, this.position.z);
     }    
   }
   
@@ -204,14 +201,21 @@ function Player(){
   
   
   this.Physics = function(){
+    if(this.IsOnArena){
+      this.position.y = PLAYER_GROUND_LEVEL; 
+    } else {
+      this.acceleration.y -= 0.028;
+    }
+    
     this.acceleration.x *= 0.2;
     this.acceleration.z *= 0.2;
     this.velocity.x += this.acceleration.x;
+    this.velocity.y += this.acceleration.y;
     this.velocity.z += this.acceleration.z;
     this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
     this.position.z += this.velocity.z;
     //this.position = this.position.addSelf(this.velocity);
-    this.position.y = PLAYER_GROUND_LEVEL; 
     
     this.velocity.x += (0 - this.velocity.x) / 15;
     this.velocity.z += (0 - this.velocity.z) / 15;
@@ -222,21 +226,30 @@ function Player(){
     this.Fall();
   }
   
+  this.IsOnArena = true;
   this.Fall = function(){
     //LEFT
     if(this.position.x < game.env.tiles[0].position.x - TILE_SIZE * MARGIN_OF_ERROR){
-      this.Reset();
+      //this.Reset();
+      this.IsOnArena = false;
     }
     //RIGHT
     if(this.position.x > game.env.tiles[game.env.tiles.length-1].position.x + TILE_SIZE * MARGIN_OF_ERROR){
-      this.Reset();
+      //this.Reset();
+      this.IsOnArena = false;
     }
     //BOTTOM
     if(this.position.z < game.env.tiles[game.env.tiles.length-1].position.z - TILE_SIZE * MARGIN_OF_ERROR){
-      this.Reset();
+      //this.Reset();
+      this.IsOnArena = false;
     }
     //TOP
     if(this.position.z > game.env.tiles[0].position.z + TILE_SIZE * MARGIN_OF_ERROR){
+      //this.Reset();
+      this.IsOnArena = false;
+    }
+    
+    if(!this.IsOnArena && this.position.y < -200){
       this.Reset();
     }
   }
@@ -247,6 +260,8 @@ function Player(){
     this.velocity = new THREE.Vector3(0,0,0);
     this.position.x = (this.index % (NUMBER_OF_TEAMS/2)) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
     this.position.z = Math.floor(this.index % NUMBER_OF_TEAMS/2) * (NUMBER_OF_ROWS-1) * TILE_SIZE;
+    this.position.y = PLAYER_GROUND_LEVEL;
+    this.IsOnArena = true;
     
     game.three.cameraAngle = 0;
     this.hasReset = true;
