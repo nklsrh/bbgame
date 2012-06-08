@@ -75,9 +75,7 @@ function Tile() {
   
   this.GoalBlink = function(){
     this.blinkValue = Math.abs(Math.cos(game.three.time * 0.2));
-    if(DEVICE == "PB"){
-      game.three.scene.__objects[this.modelIndex].material.color.setRGB(1 - this.blinkValue/2,0.4 - (this.blinkValue/5),0 + (this.blinkValue/2))
-    }
+    game.three.scene.__objects[this.modelIndex].material.color.setRGB(1 - this.blinkValue/2,0.4 - (this.blinkValue/5),0 + (this.blinkValue/2))
   }
 	
 	// SWEET LITTLE FUNCTIONS	//	

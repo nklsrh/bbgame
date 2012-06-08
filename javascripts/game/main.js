@@ -34,7 +34,7 @@ var PLAYERS_LOADED = false;
 
 var TILT_ACCELERATION = 0.03;
 
-var DEVICE = "PB";
+var DEVICE = "PC";
 var browser = navigator.userAgent;
 // Are we running in a PlayBook browser?
 if (browser.indexOf("PlayBook") > -1) {
