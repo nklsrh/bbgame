@@ -5,7 +5,6 @@ var ACCELEROMETER_SENSITIVITY = 8.0;
 
 function setupMouse(){
   if (DEVICE == "PB"){
-    initDeviceMotionEvent();
     window.addEventListener("devicemotion", setupAccelerometer, false);
   }  
   if(DEVICE == "PC"){
