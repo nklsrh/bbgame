@@ -100,7 +100,7 @@ function ThreeDee(){
     this.playersMat = new THREE.MeshLambertMaterial({color:0xFFFFFF});
     //this.playersMat = new THREE.MeshLambertMaterial({map:THREE.ImageUtils.loadTexture( './assets/objects/chars/player/player/player_texture.png')});
     for(i = 0; i < NUMBER_OF_TEAMS; i++){
-      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE, LOD * 16, LOD * 16), this.playersMat);
+      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE, LOD * 24, LOD * 24), this.playersMat);
       this.playersModel[i].name = "players" + i;
       if(DEVICE == "PC" && LOD >= 0.5){
         this.playersModel[i].castShadow = true;
