@@ -24,9 +24,7 @@ function Tile() {
     
     if(this.index == game.env.goalTile){
       this.type = game.env.TileTypes.GOAL;
-      //if(DEVICE == "PC"){
-        game.three.scene.__objects[this.modelIndex].material = new THREE.MeshBasicMaterial({color:0xFF4000});
-      //}
+      game.three.scene.__objects[this.modelIndex].material = new THREE.MeshBasicMaterial({color:0xFF4000});
     }
   }
 
@@ -77,7 +75,7 @@ function Tile() {
   
   this.GoalBlink = function(){
     this.blinkValue = Math.abs(Math.cos(game.three.time * 0.2));
-    if(DEVICE == "PC"){
+    if(DEVICE == "PB"){
       game.three.scene.__objects[this.modelIndex].material.color.setRGB(1 - this.blinkValue/2,0.4 - (this.blinkValue/5),0 + (this.blinkValue/2))
     }
   }
