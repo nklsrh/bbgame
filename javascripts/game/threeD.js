@@ -141,7 +141,7 @@ function ThreeDee(){
   this.SetCameraAngle = function(angle){
     switch(angle){
       case 0:
-        this.SetCameraPosition(this.focusPoint.x, this.focusPoint.y + 12, this.focusPoint.z + 2);
+        this.SetCameraPosition(this.focusPoint.x, this.focusPoint.y + 12, this.focusPoint.z + 4);
       break;
       case 1:
         this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 20 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);

@@ -8,7 +8,8 @@ function main(){
 	game.Draw();
 }
 
-var FPS = 60;
+var FPS = 24; //unfortunately the PlayBook isn't powerful enough
+
 var SCALING = 0.7;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
@@ -34,14 +35,15 @@ var PLAYERS_LOADED = false;
 
 var TILT_ACCELERATION = 0.03;
 
-var LOD = 0.2; //LEVEL OF DETAIL, 0 to 1
+var LOD = 0.4; //LEVEL OF DETAIL, 0 to 1
 
 var DEVICE = "PC";
 var browser = navigator.userAgent;
 // Are we running in a PlayBook browser?
 if (browser.indexOf("PlayBook") > -1 || browser.indexOf("Blackberry") > -1) {
   // Are we running in WebWorks
-  LOD = 0.2;
+  LOD = 0.4;
+  SCALING = 0.6;
   if (typeof blackberry != 'undefined') {
     DEVICE = "PB";    
   } else {
@@ -49,7 +51,8 @@ if (browser.indexOf("PlayBook") > -1 || browser.indexOf("Blackberry") > -1) {
   }
 } else {
   DEVICE = "PC";
-  LOD = 0.5;
+  LOD = 0.8;
+  SCALING = 0.9;
 }
 
 var GAME_SPEED = 1;
