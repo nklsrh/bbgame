@@ -35,10 +35,11 @@ function ThreeDee(){
     //this.SetSpotLight(0xFFFFFF, 0, 10, -60, 0.6);
 
     this.renderer = new THREE.WebGLRenderer();
+    this.renderer.setClearColorHex(0xEEEEEE, 1.0);    
     this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
     this.canvas.appendChild(this.renderer.domElement);
-    if(DEVICE == "PC"){
+    if(DEVICE == "PC" && LOD >= 0.5){
       this.renderer.shadowMapEnabled = true;
     }  
     //this.loader.load("./assets/objects/env/arena/arena.dae", game.three.ArenaModel);
@@ -67,7 +68,7 @@ function ThreeDee(){
     for(i = 0; i < NUMBER_OF_TILES; i++){
       this.tilesModel[i] = new THREE.Mesh(new THREE.CubeGeometry(TILE_SIZE-0.05, TILE_SIZE-0.05, TILE_SIZE-0.05), this.tileMat);
       this.tilesModel[i].name = "tile" + i;
-      if(DEVICE == "PC"){
+      if(DEVICE == "PC" && LOD >= 0.5){
         this.tilesModel[i].receiveShadow = true;
       }      
       game.three.scene.add(this.tilesModel[i]);
@@ -99,9 +100,9 @@ function ThreeDee(){
     this.playersMat = new THREE.MeshLambertMaterial({color:0xFFFFFF});
     //this.playersMat = new THREE.MeshLambertMaterial({map:THREE.ImageUtils.loadTexture( './assets/objects/chars/player/player/player_texture.png')});
     for(i = 0; i < NUMBER_OF_TEAMS; i++){
-      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE, 5, 5), this.playersMat);
+      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE, LOD * 16, LOD * 16), this.playersMat);
       this.playersModel[i].name = "players" + i;
-      if(DEVICE == "PC"){
+      if(DEVICE == "PC" && LOD >= 0.5){
         this.playersModel[i].castShadow = true;
       }   
       game.three.scene.add(this.playersModel[i]);
@@ -130,6 +131,9 @@ function ThreeDee(){
     this.SetCameraAngle(this.cameraAngle);
     this.camera.lookAt(this.focusPoint);
     this.canvas.width = this.canvas.width;
+    if(DEVICE == "PB"){
+      this.renderer.clear();
+    }
     this.renderer.render(this.scene, this.camera);
   }
   

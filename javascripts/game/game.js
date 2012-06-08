@@ -22,8 +22,10 @@ function Game(){
 
   this.StartNewGame = function(){
     setupMouse();
+    setupKeyboard();
   }
   this.UpdateGame = function(){
+    HandleInput();
     this.env.Update();
     this.glados.Update();
   }

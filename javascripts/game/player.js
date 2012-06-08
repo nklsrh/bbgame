@@ -19,6 +19,8 @@ function Player(){
   this.blast = new Blast();
   this.maxBlastPower = 0.09;
   
+  this.material = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+  
   this.Setup = function(index){
     NUMBER_OF_OBJECTS++;
     this.LoadNew(index);
@@ -36,6 +38,8 @@ function Player(){
     
     this.blast.Setup();
     this.blast.isEnabled = false;
+    
+    game.three.scene.__objects[this.modelIndex].material = this.material;
   }
   
   this.Update = function(){
@@ -66,17 +70,17 @@ function Player(){
   }
   
   this.UpdatePlayer = function(){
-    if(mouseX > 0){      
-      this.Right(Math.abs(mouseX));
+    if(movementInputX > 0){      
+      this.Right(Math.abs(movementInputX));
     } 
-    if(mouseX < 0){      
-      this.Left(Math.abs(mouseX));
+    if(movementInputX < 0){      
+      this.Left(Math.abs(movementInputX));
     } 
-    if(mouseY > 0){      
-      this.Down(Math.abs(mouseY));
+    if(movementInputY > 0){      
+      this.Down(Math.abs(movementInputY));
     }  
-    if(mouseY < 0){      
-      this.Up(Math.abs(mouseY));
+    if(movementInputY < 0){      
+      this.Up(Math.abs(movementInputY));
     }      
   }
   
