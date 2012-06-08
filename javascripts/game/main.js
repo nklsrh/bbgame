@@ -41,11 +41,15 @@ var browser = navigator.userAgent;
 // Are we running in a PlayBook browser?
 if (browser.indexOf("PlayBook") > -1 || browser.indexOf("Blackberry") > -1) {
   // Are we running in WebWorks
-  DEVICE = "PB";
   LOD = 0.2;
+  if (typeof blackberry != 'undefined') {
+    DEVICE = "PB";    
+  } else {
+    DEVICE = "PB-Browser";
+  }
 } else {
   DEVICE = "PC";
-  LOD = 0.7;
+  LOD = 0.5;
 }
 
 var GAME_SPEED = 1;

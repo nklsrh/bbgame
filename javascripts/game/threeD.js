@@ -131,7 +131,7 @@ function ThreeDee(){
     this.SetCameraAngle(this.cameraAngle);
     this.camera.lookAt(this.focusPoint);
     this.canvas.width = this.canvas.width;
-    if(DEVICE == "PB"){
+    if(DEVICE == "PB" || DEVICE == "PB-Browser"){
       this.renderer.clear();
     }
     this.renderer.render(this.scene, this.camera);
@@ -141,7 +141,7 @@ function ThreeDee(){
   this.SetCameraAngle = function(angle){
     switch(angle){
       case 0:
-        this.SetCameraPosition(this.focusPoint.x, this.focusPoint.y + 12, this.focusPoint.z + 6);
+        this.SetCameraPosition(this.focusPoint.x, this.focusPoint.y + 12, this.focusPoint.z + 2);
       break;
       case 1:
         this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 20 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);

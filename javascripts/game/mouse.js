@@ -7,7 +7,7 @@ function setupMouse(){
   if (DEVICE == "PB"){
     blackberry.custom.accelerometer.startAccelerometer();
   }  
-  if(DEVICE == "PC"){
+  if(DEVICE == "PC" || DEVICE == "PB-Browser"){
     window.addEventListener('mousemove', MouseMove, false);
     window.addEventListener('mousedown', MouseDown, false);
     window.addEventListener('mouseup', MouseUp, false);
