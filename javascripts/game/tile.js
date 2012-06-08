@@ -24,6 +24,7 @@ function Tile() {
     
     if(this.index == game.env.goalTile){
       this.type = game.env.TileTypes.GOAL;
+      game.three.scene.__objects[this.modelIndex].material = new THREE.MeshBasicMaterial({color:0xFF4000});
     }
   }
 
@@ -58,6 +59,7 @@ function Tile() {
       break;
       case game.env.TileTypes.GOAL:
         this.targetRotation = 90 * Math.PI / 180;
+        this.GoalBlink();
       break;
     }  
     this.rotation.y += (this.targetRotation - this.rotation.y)/5;
@@ -70,6 +72,11 @@ function Tile() {
       this.position.y += (FLOOR - this.position.y)/1.5;
     }
   }  
+  
+  this.GoalBlink = function(){
+    this.blinkValue = Math.abs(Math.cos(game.three.time * 0.2));
+    game.three.scene.__objects[this.modelIndex].material.color.setRGB(1 - this.blinkValue/2,0.4 - (this.blinkValue/5),0 + (this.blinkValue/2))
+  }
 	
 	// SWEET LITTLE FUNCTIONS	//	
 	this.SetAsCurrentTile = function(playerIndex){

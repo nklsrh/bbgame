@@ -38,7 +38,9 @@ function ThreeDee(){
     this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
     this.canvas.appendChild(this.renderer.domElement);
-    //this.renderer.shadowMapEnabled = true;
+    if(DEVICE == "PC"){
+      this.renderer.shadowMapEnabled = true;
+    }  
     //this.loader.load("./assets/objects/env/arena/arena.dae", game.three.ArenaModel);
     game.three.TileCubes();
   }
@@ -63,9 +65,11 @@ function ThreeDee(){
     this.tilesModel = [];
     this.tileMat = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
     for(i = 0; i < NUMBER_OF_TILES; i++){
-      this.tilesModel[i] = new THREE.Mesh(new THREE.CubeGeometry(1.9, 1.9, 1.9), this.tileMat);
+      this.tilesModel[i] = new THREE.Mesh(new THREE.CubeGeometry(1.95, 1.95, 1.95), this.tileMat);
       this.tilesModel[i].name = "tile" + i;
-      //this.tilesModel[i].receiveShadow = true;
+      if(DEVICE == "PC"){
+        this.tilesModel[i].receiveShadow = true;
+      }      
       game.three.scene.add(this.tilesModel[i]);
     }
     TILES_LOADED = true;
@@ -94,9 +98,11 @@ function ThreeDee(){
     this.playersModel = [];
     this.playersMat = new THREE.MeshLambertMaterial({map:THREE.ImageUtils.loadTexture( './assets/objects/chars/player/player/player_texture.png')});
     for(i = 0; i < NUMBER_OF_TEAMS; i++){
-      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE - 1, 16, 16), this.playersMat);
+      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE - 1, 8, 8), this.playersMat);
       this.playersModel[i].name = "players" + i;
-      //this.playersModel[i].castShadow = true;
+      if(DEVICE == "PC"){
+        this.playersModel[i].castShadow = true;
+      }   
       game.three.scene.add(this.playersModel[i]);
     }
     PLAYERS_LOADED = true;
