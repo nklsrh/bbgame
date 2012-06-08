@@ -8,8 +8,8 @@ function setupAccelerometer(event){
 }
 
 function PlayerAccelerometerInput(){
-  movementInputX = clamp(ACCELEROMETER_SENSITIVITY * accelerometerEvents.accelerationIncludingGravity.x, -1, 1);
-  movementInputY = clamp(ACCELEROMETER_SENSITIVITY * accelerometerEvents.accelerationIncludingGravity.y, -1, 1);
+  movementInputX = THREE.Math.clamp(ACCELEROMETER_SENSITIVITY * accelerometerEvents.accelerationIncludingGravity.x, -1, 1);
+  movementInputY = THREE.Math.clamp(ACCELEROMETER_SENSITIVITY * accelerometerEvents.accelerationIncludingGravity.y, -1, 1);
 }
 
 function PlayerMouseInput(e){
