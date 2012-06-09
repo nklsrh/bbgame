@@ -8,21 +8,51 @@ function main(){
 	game.Draw();
 }
 
-var FPS = 60;
-var SCALING = 1;
+var FPS = 24; //unfortunately the PlayBook isn't powerful enough
+
+var SCALING = 0.5;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
 
 var NUMBER_OF_ROWS = 7;
 var NUMBER_OF_TILES = NUMBER_OF_ROWS * NUMBER_OF_ROWS;
 var TILE_SIZE = 2;
-var PLAYER_SIZE = 1.3;
 
+var PLAYER_SIZE = 0.25;
+
+var MARGIN_OF_ERROR = 0.65;
 var FLOOR = TILE_SIZE;
+var PLAYER_GROUND_LEVEL = FLOOR + TILE_SIZE/2;
+var FRICTION = 0.7;
 
 var NUMBER_OF_OBJECTS = 0;
-var NUMBER_OF_TEAMS = 4;
+var NUMBER_OF_TEAMS = 3;
+var NUMBER_OF_ARENA_OBJECTS = 0;
 
 var ARENA_LOADED = false;
 var TILES_LOADED = false;
 var PLAYERS_LOADED = false;
+
+var TILT_ACCELERATION = 0.03;
+
+var LOD = 0.4; //LEVEL OF DETAIL, 0 to 1
+
+var DEVICE = "PC";
+var browser = navigator.userAgent;
+// Are we running in a PlayBook browser?
+if (browser.indexOf("PlayBook") > -1 || browser.indexOf("Blackberry") > -1) {
+  // Are we running in WebWorks
+  LOD = 0.4;
+  SCALING = 0.6;
+  if (typeof blackberry != 'undefined') {
+    DEVICE = "PB";    
+  } else {
+    DEVICE = "PB-Browser";
+  }
+} else {
+  DEVICE = "PC";
+  LOD = 0.8;
+  SCALING = 0.9;
+}
+
+var GAME_SPEED = 1;

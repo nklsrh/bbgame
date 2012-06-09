@@ -5,6 +5,8 @@ function Game(){
   this.glados = new Glados();
   this.env = new Environment();
   
+  this.lights = new Lights();
+  
   this.Setup = function(){
     //SetupThree();
     this.three.Setup();
@@ -15,19 +17,22 @@ function Game(){
   this.Update = function(){
     game.UpdateGame();   
   }
-  this.Draw = function(){	
+  this.Draw = function(){    
     game.DrawGame();
     requestAnimationFrame(game.Draw);		
   }
 
   this.StartNewGame = function(){
     setupMouse();
+    setupKeyboard();
   }
   this.UpdateGame = function(){
+    HandleInput();
     this.env.Update();
     this.glados.Update();
   }
   this.DrawGame = function(){
     this.three.Draw();
+    this.lights.Draw();
   }
 }

@@ -16,7 +16,7 @@ function ThreeDee(){
   this.focusPoint = new THREE.Vector3(0,0,0);
   
   this.Setup = function(){
-    this.canvas = document.getElementById('gameCanvas');
+    this.canvas = document.getElementById("gameCanvas");
     this.scene = new THREE.Scene();
 
     this.AddCamera(this.fov, this.aspect, this.near, this.far);
@@ -25,17 +25,25 @@ function ThreeDee(){
     // Grid
     //this.AddLinesOnGround();
 
-    this.SetAmbientLight(0xC7C5C3);
+    this.SetAmbientLight(0x222222);
 
-    this.SetPointLight(0xC7C5C3, 1000, 1000, 700, 1);
+    this.SetPointLight(0xFFFFFF, 100, 190, 70, 0.2);
+    this.SetSpotLight(0xFFFFFF, 100, 40, 70, 0.5);
+    this.SetSpotLight(0xFFFFFF, -100, 40, 70, 0.5);
+    this.SetSpotLight(0xFFFFFF, 100, 40, -70, 0.5);
+    this.SetSpotLight(0xFFFFFF, -100, 40, -70, 0.5);
+    //this.SetSpotLight(0xFFFFFF, 0, 10, -60, 0.6);
 
     this.renderer = new THREE.WebGLRenderer();
+    //this.renderer.setClearColorHex(0xEEEEEE, 1.0);    
     this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
     this.canvas.appendChild(this.renderer.domElement);
-    
-    this.loader.load("./assets/objects/env/arena/arena.dae", game.three.ArenaModel);
-
+    if(DEVICE == "PC" && LOD >= 0.5){
+      this.renderer.shadowMapEnabled = true;
+    }  
+    //this.loader.load("./assets/objects/env/arena/arena.dae", game.three.ArenaModel);
+    game.three.TileCubes();
   }
     
   this.loader = new THREE.ColladaLoader();
@@ -49,8 +57,24 @@ function ThreeDee(){
     this.arenaModel.name = "arena";
     game.three.scene.add(this.arenaModel);         
     ARENA_LOADED = true;
-    this.loader = new THREE.ColladaLoader();
-    this.loader.load("./assets/objects/env/tiles/tile.dae", game.three.TileModel);    
+    game.three.TileCubes();
+    //this.loader = new THREE.ColladaLoader();
+    //this.loader.load("./assets/objects/env/tiles/tile.dae", game.three.TileModel);    
+  }
+  
+  this.TileCubes = function(){
+    this.tilesModel = [];
+    this.tileMat = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+    for(i = 0; i < NUMBER_OF_TILES; i++){
+      this.tilesModel[i] = new THREE.Mesh(new THREE.CubeGeometry(TILE_SIZE-0.05, TILE_SIZE-0.05, TILE_SIZE-0.05), this.tileMat);
+      this.tilesModel[i].name = "tile" + i;
+      if(DEVICE == "PC" && LOD >= 0.5){
+        this.tilesModel[i].receiveShadow = true;
+      }      
+      game.three.scene.add(this.tilesModel[i]);
+    }
+    TILES_LOADED = true;
+    game.three.PlayerSpheres();
   }
   
   this.tilesModel = [];
@@ -63,12 +87,29 @@ function ThreeDee(){
     game.three.scene.add(this.tilesModel[0]);
     for(i = 1; i < NUMBER_OF_TILES; i++){
       this.tilesModel[i] = THREE.SceneUtils.cloneObject(this.tilesModel[i-1]);
-      this.tilesModel[i].name = "tile" + i;
+      this.tilesModel[i].name = "tile" + i;      
       game.three.scene.add(this.tilesModel[i]);
     }
     TILES_LOADED = true;
-    this.loader = new THREE.ColladaLoader();
-    this.loader.load("./assets/objects/chars/player/player.dae", game.three.PlayerModel);
+    //this.loader = new THREE.ColladaLoader();
+    //this.loader.load("./assets/objects/chars/player/player.dae", game.three.PlayerModel);
+  }
+  
+  this.PlayerSpheres = function(){
+    this.playersModel = [];
+    this.playersMat = new THREE.MeshLambertMaterial({color:0xFFFFFF});
+    //this.playersMat = new THREE.MeshLambertMaterial({map:THREE.ImageUtils.loadTexture( './assets/objects/chars/player/player/player_texture.png')});
+    for(i = 0; i < NUMBER_OF_TEAMS; i++){
+      this.playersModel[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE, LOD * 24, LOD * 24), this.playersMat);
+      this.playersModel[i].name = "players" + i;
+      if(DEVICE == "PC" && LOD >= 0.5){
+        this.playersModel[i].castShadow = true;
+      }   
+      game.three.scene.add(this.playersModel[i]);
+    }
+    PLAYERS_LOADED = true;
+    this.Blasts();
+    //this.BackgroundTiles();
   }
   
   this.playersModel = [];
@@ -87,13 +128,53 @@ function ThreeDee(){
     PLAYERS_LOADED = true;
   }
   
+  this.Blasts = function(){
+    this.blastModels = [];
+    this.blastMat = new THREE.MeshLambertMaterial({color: 0x00FFA2});
+    for(i = 0; i < NUMBER_OF_TEAMS; i++){
+      this.blastModels[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE * 5, LOD * 12, LOD * 12), this.blastMat);
+      game.three.scene.add(this.blastModels[i]);
+    }
+  }
+  
+  
+  this.BackgroundTiles = function(){
+    this.backTiles = [];
+    this.whiteTile = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+    for(i = 0; i < NUMBER_OF_TILES * 10; i++){
+      this.backTiles[i] = new THREE.Mesh(new THREE.CubeGeometry(Math.abs(Math.sin(game.three.time) * 3), Math.abs(Math.sin(game.three.time) * 3), Math.abs(Math.sin(game.three.time) * 3)), this.whiteTile);
+      this.backTiles[i].position.set(Math.sin(i) * 100, Math.sin(i) * 100, Math.cos(i) * 100);
+      game.three.scene.add(this.backTiles[i]);
+    }
+  }
+  
+  
+  
+  
+  
   this.Draw = function(){
     this.time++;
-    this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 20 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
+    this.SetCameraAngle(this.cameraAngle);
     this.camera.lookAt(this.focusPoint);
-    this.canvas.width = this.canvas.width;
+    //this.canvas.width = this.canvas.width;
+    if(DEVICE == "PB" || DEVICE == "PB-Browser"){
+      this.renderer.clear();
+    }
+    
     this.renderer.render(this.scene, this.camera);
   }
+  
+  this.cameraAngle = 1;
+  this.SetCameraAngle = function(angle){
+    switch(angle){
+      case 0:
+        this.SetCameraPosition(this.focusPoint.x, this.focusPoint.y + 12, this.focusPoint.z + 4);
+      break;
+      case 1:
+        this.SetCameraPosition(Math.sin(this.time * 0.01) * 20, 20 + 20 * Math.sin(this.time * 0.005), -Math.cos(this.time * 0.01) * 20);
+      break;
+    }
+  }  
   
   this.AddCamera = function(fov, aspect, near, far){
     this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
@@ -132,5 +213,12 @@ function ThreeDee(){
     this.pointLight.position.z = z;
     this.pointLight.intensity = intensity;
     this.scene.add(this.pointLight);
+  }  
+  this.SetSpotLight = function(hexColour, x, y, z, intensity){
+    this.spotLight = new THREE.SpotLight(hexColour);
+    this.spotLight.position.set(x, y, z);
+    this.spotLight.intensity = intensity;
+    this.spotLight.castShadow = true;
+    this.scene.add(this.spotLight);
   }  
 }

@@ -21,7 +21,7 @@ function Environment() {
 	}
   
 	this.Setup = function(){
-    this.modelIndex = 0;
+    this.modelIndex = NUMBER_OF_ARENA_OBJECTS - 2;
     this.goalTile = (NUMBER_OF_TILES - 1)/2;
     for(x = 0; x < this.tileCount; x++){    
       this.tiles[x] = new Tile();        
@@ -33,16 +33,16 @@ function Environment() {
 	this.Update = function(){    
     if(ARENA_LOADED){
       this.position.x = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;
-      this.position.z = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;
-      game.three.scene.__objects[this.modelIndex].position = this.position;
-      
-      if(TILES_LOADED){
-        for(x = 0; x < this.tileCount; x++){
-          this.tiles[x].Update();
-        }
-      }      
+      this.position.y = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;
+      game.three.scene.__objects[this.modelIndex].position = this.position;      
+           
       game.three.focusPoint = this.position;
     }
+    if(TILES_LOADED){
+      for(x = 0; x < this.tileCount; x++){
+        this.tiles[x].Update();
+      }
+    } 
 	}
   
   this.ModelLoaded = function(){
