@@ -10,11 +10,11 @@ function main(){
 
 var FPS = 24; //unfortunately the PlayBook isn't powerful enough
 
-var SCALING = 0.7;
+var SCALING = 0.5;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
 
-var NUMBER_OF_ROWS = 5;
+var NUMBER_OF_ROWS = 7;
 var NUMBER_OF_TILES = NUMBER_OF_ROWS * NUMBER_OF_ROWS;
 var TILE_SIZE = 2;
 

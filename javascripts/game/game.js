@@ -5,6 +5,8 @@ function Game(){
   this.glados = new Glados();
   this.env = new Environment();
   
+  this.lights = new Lights();
+  
   this.Setup = function(){
     //SetupThree();
     this.three.Setup();
@@ -31,5 +33,6 @@ function Game(){
   }
   this.DrawGame = function(){
     this.three.Draw();
+    this.lights.Draw();
   }
 }

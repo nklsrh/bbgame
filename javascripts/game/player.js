@@ -100,10 +100,7 @@ function Player(){
     this.targetPosition.y = PLAYER_GROUND_LEVEL;
     
     this.directionToGoal.x = (this.targetPosition.x - this.position.x) * 0.65;
-    this.directionToGoal.y = (this.targetPosition.y - this.position.y) * 0.65;
     this.directionToGoal.z = (this.targetPosition.z - this.position.z) * 0.65;
-    //this.directionToGoal.x -= this.position.x;
-    //this.directionToGoal.y -= this.position.y;
     
     this.directionToGoal.normalize();
 
@@ -125,11 +122,11 @@ function Player(){
   
   this.chosenTarget = -1;
   this.Apprehension = function(){
-    if (this.chosenTarget < 0){
+    if (this.chosenTarget < 0 && !this.blast.isEnabled){
       for (i = 0; i < NUMBER_OF_TEAMS; i++){
         if (i != this.index){
-          var distance = Math.sqrt((game.glados.players[i].position.x - this.position.x)^2 + (game.glados.players[i].position.z - this.position.z)^2)
-          if (distance < PLAYER_SIZE){
+          var distance = Math.sqrt((game.glados.players[i].position.x - this.position.x)^2 + (game.glados.players[i].position.z - this.position.z)^2);
+          if (distance < PLAYER_SIZE * 2){
             this.chosenTarget = i;
           } else {
             this.isApprehending = false;
@@ -137,7 +134,9 @@ function Player(){
         }
       }
     } else {
-      //this.AttackTarget(this.chosenTarget);
+      if(this.chosenTarget >= 0){
+        this.AttackTarget(this.chosenTarget);
+      }
     }            
   }
   
@@ -150,10 +149,10 @@ function Player(){
     this.blastDirection.normalize();
     this.PrepBlast();
     
-    if(this.blastStrength >= this.aggression * this.maxBlastPower){
-      this.PerformBlast();
-      chosenTarget = -1;
-    }
+    //if(this.blastStrength >= this.aggression / 10){
+      //this.PerformBlast();
+      this.chosenTarget = -1;
+    //}
     
     this.isApprehending = true;
   }
@@ -161,20 +160,22 @@ function Player(){
   this.isPreppingBlast = false;
   
   this.PrepBlast = function(){
-    if(this.blastStrength < this.maxBlastPower){
-      this.blastStrength += 0.01;    
-    }  
+    //if(this.blastStrength < this.maxBlastPower){
+      this.blastStrength += 0.01;   
+      this.PerformBlast();
+    //}  
     this.isPreppingBlast = true;
   }
   
   this.PerformBlast = function(){
     if(!this.blast.isEnabled && this.isPreppingBlast){
-      this.blast.Initialize();
+      this.blast.Initialize(this.index);
       
       this.blast.strength = this.blastStrength;
       this.blast.speed = 0.01;
       this.blast.velocity = this.blastDirection;
       this.blast.position = this.position;
+      this.blast.isEnabled = true;
       this.isPreppingBlast = false;
       this.blastStrength = 0;
 
@@ -183,8 +184,8 @@ function Player(){
   }
   
   this.BlastRecoil = function(){
-    this.velocity.x = -this.blast.velocity.x * 0.2 * this.blast.strength;
-    this.velocity.z = -this.blast.velocity.z * 0.2 * this.blast.strength;
+    this.velocity.x = -this.blast.velocity.x * 0.2;
+    this.velocity.z = -this.blast.velocity.z * 0.2;
   }
   
   this.Up = function(weight){

@@ -16,7 +16,7 @@ function ThreeDee(){
   this.focusPoint = new THREE.Vector3(0,0,0);
   
   this.Setup = function(){
-    this.canvas = document.getElementById('gameCanvas');
+    this.canvas = document.getElementById("gameCanvas");
     this.scene = new THREE.Scene();
 
     this.AddCamera(this.fov, this.aspect, this.near, this.far);
@@ -35,7 +35,7 @@ function ThreeDee(){
     //this.SetSpotLight(0xFFFFFF, 0, 10, -60, 0.6);
 
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setClearColorHex(0xEEEEEE, 1.0);    
+    //this.renderer.setClearColorHex(0xEEEEEE, 1.0);    
     this.renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
 
     this.canvas.appendChild(this.renderer.domElement);
@@ -108,6 +108,8 @@ function ThreeDee(){
       game.three.scene.add(this.playersModel[i]);
     }
     PLAYERS_LOADED = true;
+    this.Blasts();
+    //this.BackgroundTiles();
   }
   
   this.playersModel = [];
@@ -126,14 +128,39 @@ function ThreeDee(){
     PLAYERS_LOADED = true;
   }
   
+  this.Blasts = function(){
+    this.blastModels = [];
+    this.blastMat = new THREE.MeshLambertMaterial({color: 0x00FFA2});
+    for(i = 0; i < NUMBER_OF_TEAMS; i++){
+      this.blastModels[i] = new THREE.Mesh(new THREE.SphereGeometry(PLAYER_SIZE * 5, LOD * 12, LOD * 12), this.blastMat);
+      game.three.scene.add(this.blastModels[i]);
+    }
+  }
+  
+  
+  this.BackgroundTiles = function(){
+    this.backTiles = [];
+    this.whiteTile = new THREE.MeshLambertMaterial({color: 0xFFFFFF});
+    for(i = 0; i < NUMBER_OF_TILES * 10; i++){
+      this.backTiles[i] = new THREE.Mesh(new THREE.CubeGeometry(Math.abs(Math.sin(game.three.time) * 3), Math.abs(Math.sin(game.three.time) * 3), Math.abs(Math.sin(game.three.time) * 3)), this.whiteTile);
+      this.backTiles[i].position.set(Math.sin(i) * 100, Math.sin(i) * 100, Math.cos(i) * 100);
+      game.three.scene.add(this.backTiles[i]);
+    }
+  }
+  
+  
+  
+  
+  
   this.Draw = function(){
     this.time++;
     this.SetCameraAngle(this.cameraAngle);
     this.camera.lookAt(this.focusPoint);
-    this.canvas.width = this.canvas.width;
+    //this.canvas.width = this.canvas.width;
     if(DEVICE == "PB" || DEVICE == "PB-Browser"){
       this.renderer.clear();
     }
+    
     this.renderer.render(this.scene, this.camera);
   }
   
