@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.w3.org/ns/widgets" 
    xmlns:rim="http://www.blackberry.com/ns/widgets" 
-   version="0.0.5.1" rim:header="BLASTR:ARENA">
+   version="0.0.5.2" rim:header="ARENA">
 
-  <name>BLASTR:ARENA</name>
+  <name>ARENA</name>
   <description>Blast your way past other teams in your attempt to be champion.</description>
   <content src="index.html"/>
   <rim:orientation mode="landscape"/>
