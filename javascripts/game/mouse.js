@@ -1,7 +1,6 @@
 var IsMouseDown = false, IsRightMouseDown = false, pMouseDown = false, pRMouseDown = false, mouseX = 1, mouseY = 1, rawX = 1, rawY = 1, pmouseX, pmouseY;
 
 var useMouse = true;  //by default use mouse, check for playbook, then use accelerometer
-var ACCELEROMETER_SENSITIVITY = 8.0;
 
 function setupMouse(){
   if (DEVICE == "PB"){

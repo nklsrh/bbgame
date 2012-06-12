@@ -2,6 +2,8 @@
 var movementInputX, movementInputY;
 var blastInputX, blastInputY;
 
+var ACCELEROMETER_SENSITIVITY = 16.0;
+
 var accelerometerEvents;
 function setupAccelerometer(event){
   accelerometerEvents = event;
