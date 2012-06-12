@@ -162,7 +162,7 @@ function Player(){
   this.PrepBlast = function(){
     //if(this.blastStrength < this.maxBlastPower){
       this.blastStrength += 0.01;   
-      this.PerformBlast();
+      //this.PerformBlast();
     //}  
     this.isPreppingBlast = true;
   }

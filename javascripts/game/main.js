@@ -4,13 +4,14 @@ function main(){
 	game = new Game();
 	game.Setup();
 	
+  document.body.appendChild( stats.domElement );
 	setInterval(game.Update, 960/FPS);
 	game.Draw();
 }
 
-var FPS = 24; //unfortunately the PlayBook isn't powerful enough
+var FPS = 60; //unfortunately the PlayBook isn't powerful enough
 
-var SCALING = 0.5;
+var SCALING = 0.7;
 var CANVAS_WIDTH = 1024 * SCALING;
 var CANVAS_HEIGHT = 600 * SCALING;
 
@@ -56,3 +57,13 @@ if (browser.indexOf("PlayBook") > -1 || browser.indexOf("Blackberry") > -1) {
 }
 
 var GAME_SPEED = 1;
+
+
+var stats = new Stats();
+stats.setMode(0); // 0: fps, 1: ms
+
+// Align top-left
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+stats.domElement.style.zIndex = '100';
