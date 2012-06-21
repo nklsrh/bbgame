@@ -3,6 +3,7 @@ var movementInputX, movementInputY;
 var blastInputX, blastInputY;
 
 var ACCELEROMETER_SENSITIVITY = 16.0;
+var TILT_ACCELERATION = 0.03;
 
 var accelerometerEvents;
 function setupAccelerometer(event){

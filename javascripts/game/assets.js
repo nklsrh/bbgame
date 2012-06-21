@@ -1,5 +1,7 @@
 function Assets(){
   
-  this.tiles = new Array();
- 
+  this.hydrogen = new Image();
+  this.Setup = function(){
+    this.hydrogen.src = "./assets/objects/chars/player/player/hydrogen.png";
+  }
 }
