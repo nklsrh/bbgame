@@ -19,5 +19,8 @@ function Glados() {
 	}
 
 	this.Draw = function(){		
+    for(x = 0; x < this.playerCount; x++){
+      this.players[x].Draw();
+    }  
 	}
 }

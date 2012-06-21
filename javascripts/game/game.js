@@ -1,17 +1,17 @@
 function Game(){
 
-  this.three = new ThreeDee();
   this.assets = new Assets();
   this.glados = new Glados();
   this.env = new Environment();
   
+  this.rules = new Rules();
   this.lights = new Lights();
+  this.camera = new Camera();
   
   this.Setup = function(){
-    //SetupThree();
-    this.three.Setup();
     this.env.Setup();
     this.glados.Setup();
+    this.rules.Setup();
     game.StartNewGame();	    
   }
   this.Update = function(){
@@ -32,9 +32,13 @@ function Game(){
     HandleInput();
     this.env.Update();
     this.glados.Update();
+    this.rules.Update();
+    this.camera.Update();
   }
   this.DrawGame = function(){
-    this.three.Draw();
+    CANVAS.width = CANVAS.width;
     this.lights.Draw();
+    this.env.Draw();
+    this.glados.Draw();
   }
 }

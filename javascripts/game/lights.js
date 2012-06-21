@@ -11,9 +11,9 @@ function Lights(){
   this.I, this.J, this.K;
   
   this.Draw = function(){
-    this.I = Math.sin(game.three.time * 0.02);
-    this.J = Math.cos(game.three.time * 0.02);
-    this.K = Math.cos(game.three.time * 0.02);
+    this.I = Math.sin(game.rules.time * 0.02);
+    this.J = Math.cos(game.rules.time * 0.02);
+    this.K = Math.cos(game.rules.time * 0.02);
     
     this.r = Math.floor(Math.abs(this.I + this.K) * 150);
     this.g = Math.ceil(Math.abs(this.J + this.I) * 00);

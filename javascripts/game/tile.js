@@ -1,6 +1,6 @@
 function Tile() {
 
-  this.size = 2;
+  this.size = TILE_SIZE;
   this.modelIndex;
   
   this.position = new THREE.Vector3(0,0,0);
@@ -24,7 +24,6 @@ function Tile() {
     
     if(this.index == game.env.goalTile){
       this.type = game.env.TileTypes.GOAL;
-      game.three.scene.__objects[this.modelIndex].material = new THREE.MeshBasicMaterial({color:0xFF4000});
     }
   }
 
@@ -32,15 +31,13 @@ function Tile() {
     if(TILES_LOADED){
       this.TypeRotate();
       this.AlignToGrid();
-      this.AlignHole();
-      game.three.scene.__objects[this.modelIndex].position = this.position;   
-      game.three.scene.__objects[this.modelIndex].rotation = this.rotation;   
+      this.AlignHole();  
     }
   }
   
   this.AlignToGrid = function(){
-    this.position.x = (((this.index-(this.index % NUMBER_OF_ROWS))/(NUMBER_OF_ROWS)) * this.size);
-    this.position.z = ((NUMBER_OF_ROWS - (this.index % NUMBER_OF_ROWS)) * this.size) - this.size;
+    this.position.x = (((this.index-(this.index % NUMBER_OF_ROWS))/(NUMBER_OF_ROWS)) * this.size) + this.size/2;
+    this.position.z = ((NUMBER_OF_ROWS - (this.index % NUMBER_OF_ROWS)) * this.size) - this.size/2;
   }
   
   this.TypeRotate = function(){
@@ -74,10 +71,15 @@ function Tile() {
   }  
   
   this.GoalBlink = function(){
-    this.blinkValue = Math.abs(Math.cos(game.three.time * 0.2));
-    game.three.scene.__objects[this.modelIndex].material.color.setRGB(1 - this.blinkValue/2,0.4 - (this.blinkValue/5),0 + (this.blinkValue/2))
+    this.blinkValue = Math.abs(Math.cos(game.rules.time * 0.2));
   }
 	
+  this.Draw = function(){
+    CTX.fillStyle = '#111';
+    CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
+    CTX.fillStyle = '#fff';
+    CTX.fillRect((this.position.x - this.size/2) + this.size * 0.1, (this.position.z - this.size/2) + this.size * 0.1, this.size * 0.9, this.size * 0.9);    
+  }
 	// SWEET LITTLE FUNCTIONS	//	
 	this.SetAsCurrentTile = function(playerIndex){
 		this.hasPlayer[playerIndex] = true;

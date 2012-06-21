@@ -6,33 +6,35 @@
     <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0">
     
     <title>BLASTR:ARENA</title>
-
-    <script type="text/javascript" src="javascripts/extras/Three.js"></script>
-    <script type="text/javascript" src="javascripts/extras/ColladaLoader.js"></script>
-    <script type="text/javascript" src="javascripts/extras/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/extras/requestAnimationFrame.js"></script>
-    <script type="text/javascript" src="javascripts/extras/stats.js"></script>
-    
-    <script type="text/javascript" src="javascripts/game/main.js"></script>
-    
-    <script type="text/javascript" src="javascripts/game/keyboard.js"></script>    
-    <script type="text/javascript" src="javascripts/game/mouse.js"></script>
-    <script type="text/javascript" src="javascripts/game/input.js"></script>
-    <script type="text/javascript" src="javascripts/game/threeD.js"></script>
-    <script type="text/javascript" src="javascripts/game/assets.js"></script>
-    <script type="text/javascript" src="javascripts/game/game.js"></script>    
-    
-    <script type="text/javascript" src="javascripts/game/environment.js"></script>
-    <script type="text/javascript" src="javascripts/game/tile.js"></script>
-    <script type="text/javascript" src="javascripts/game/GlaDOS.js"></script>
-    <script type="text/javascript" src="javascripts/game/player.js"></script>
-    <script type="text/javascript" src="javascripts/game/blast.js"></script>   
-    
-    <script type="text/javascript" src="javascripts/game/lights.js"></script>
   </head>
 
   <body onload='main();'>
     <canvas id='backgroundCanvas'></canvas>
-    <div id='gameCanvas'></div>
+    <canvas id='gameCanvas'></canvas>
+    <canvas id='cameraCanvas'></canvas>
   </body>
+  
+  <script type="text/javascript" src="javascripts/extras/Three.js"></script>
+  <script type="text/javascript" src="javascripts/extras/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/extras/requestAnimationFrame.js"></script>
+  <script type="text/javascript" src="javascripts/extras/stats.js"></script>
+  
+  <script type="text/javascript" src="javascripts/game/main.js"></script>
+  
+  <script type="text/javascript" src="javascripts/game/keyboard.js"></script>    
+  <script type="text/javascript" src="javascripts/game/mouse.js"></script>
+  <script type="text/javascript" src="javascripts/game/input.js"></script>
+  <script type="text/javascript" src="javascripts/game/assets.js"></script>
+  <script type="text/javascript" src="javascripts/game/game.js"></script>    
+  
+  <script type="text/javascript" src="javascripts/game/rules.js"></script>
+  <script type="text/javascript" src="javascripts/game/environment.js"></script>
+  <script type="text/javascript" src="javascripts/game/tile.js"></script>
+  <script type="text/javascript" src="javascripts/game/GlaDOS.js"></script>
+  <script type="text/javascript" src="javascripts/game/player.js"></script>
+  <script type="text/javascript" src="javascripts/game/blast.js"></script>   
+  
+  <script type="text/javascript" src="javascripts/game/camera.js"></script>
+  
+  <script type="text/javascript" src="javascripts/game/lights.js"></script>
 </html>

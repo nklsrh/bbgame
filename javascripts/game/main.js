@@ -11,28 +11,33 @@ function main(){
 
 var FPS = 60; //unfortunately the PlayBook isn't powerful enough
 
-var SCALING = 0.7;
-var CANVAS_WIDTH = 1024 * SCALING;
-var CANVAS_HEIGHT = 600 * SCALING;
+var SCALING = 1;
+var CANVAS = document.getElementById('gameCanvas');
+var CTX = CANVAS.getContext('2d');
+var CANVAS_WIDTH = 512 * SCALING;
+var CANVAS_HEIGHT = 512 * SCALING;
+CANVAS.width = CANVAS_WIDTH;
+CANVAS.height = CANVAS_HEIGHT;
 
-var NUMBER_OF_ROWS = 7;
+var NUMBER_OF_ROWS = 11;
 var NUMBER_OF_TILES = NUMBER_OF_ROWS * NUMBER_OF_ROWS;
-var TILE_SIZE = 2;
+var TILE_SIZE = 506/NUMBER_OF_ROWS  * SCALING;
 
-var PLAYER_SIZE = 0.25;
+var PLAYER_SIZE = TILE_SIZE / 8;
 
 var MARGIN_OF_ERROR = 0.65;
 var FLOOR = TILE_SIZE;
 var PLAYER_GROUND_LEVEL = FLOOR + TILE_SIZE/2;
 var FRICTION = 0.7;
+var VIEWPORT_SCALE = TILE_SIZE / 2;
 
 var NUMBER_OF_OBJECTS = 0;
 var NUMBER_OF_TEAMS = 3;
 var NUMBER_OF_ARENA_OBJECTS = 0;
 
-var ARENA_LOADED = false;
-var TILES_LOADED = false;
-var PLAYERS_LOADED = false;
+var ARENA_LOADED = true;
+var TILES_LOADED = true;
+var PLAYERS_LOADED = true;
 
 var TILT_ACCELERATION = 0.03;
 
