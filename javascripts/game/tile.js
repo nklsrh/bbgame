@@ -75,6 +75,14 @@ function Tile() {
   }
 	
   this.Draw = function(){
+    switch(this.type){
+      case game.env.TileTypes.NORMAL:
+      CTX.fillStyle = '#002634';
+      break;
+      case game.env.TileTypes.GOAL:
+      CTX.fillStyle = '#FF7000';
+      break; 
+    }
     //if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 4 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 4) {
       //CTX.fillStyle = '#88C425';
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
