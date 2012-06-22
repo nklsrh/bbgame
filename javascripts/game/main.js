@@ -13,8 +13,7 @@ var FPS = 60;
 
 var SCALING = 1;
 var CANVAS = document.getElementById('gameCanvas');
-WebGL2D.enable(CANVAS); // adds "webgl-2d" context to CANVAS
-var CTX = CANVAS.getContext('webgl-2d');
+var CTX = CANVAS.getContext('2d');
 var CANVAS_WIDTH = 512 * SCALING;
 var CANVAS_HEIGHT = 512 * SCALING;
 CANVAS.width = CANVAS_WIDTH;
