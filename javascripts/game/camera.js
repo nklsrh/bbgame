@@ -1,4 +1,4 @@
-var CAMERA_ZOOM = 1;
+var CAMERA_ZOOM = 1.7;
 
 function Camera(){
   this.position = new THREE.Vector3(0,0,0);
@@ -10,12 +10,7 @@ function Camera(){
   }
   
   this.Draw = function(){
-    C_CANVAS.width = C_CANVAS.width;
-    C_CTX.drawImage(CANVAS, -this.position.x + CANVAS_WIDTH/2/CAMERA_ZOOM, -this.position.z + CANVAS_HEIGHT/2/CAMERA_ZOOM, CANVAS_WIDTH, CANVAS_HEIGHT);
+    //CANVAS.width = C_CANVAS.width;
+    //CTX.drawImage(CANVAS, -this.position.x + CANVAS_WIDTH/2/CAMERA_ZOOM, -this.position.z + CANVAS_HEIGHT/2/CAMERA_ZOOM, CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 }
-
-var C_CANVAS = document.getElementById('cameraCanvas');
-var C_CTX = C_CANVAS.getContext('2d');
-C_CANVAS.width = CANVAS_WIDTH / CAMERA_ZOOM;
-C_CANVAS.height = CANVAS_HEIGHT / CAMERA_ZOOM;
