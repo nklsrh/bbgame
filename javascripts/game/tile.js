@@ -83,13 +83,13 @@ function Tile() {
       CTX.fillStyle = '#FF7000';
       break; 
     }
-    if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 4 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 4) {
+    //if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 4 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 4) {
       //CTX.fillStyle = '#88C425';
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
       //CTX.fillStyle = '#BEF202';
       //CTX.fillRect((this.position.x - this.size/2) + this.size * 0.025, (this.position.z - this.size/2) + this.size * 0.025, this.size * 0.975, this.size * 0.975);
       CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
-    }
+    //}
   }
 	// SWEET LITTLE FUNCTIONS	//	
 	this.SetAsCurrentTile = function(playerIndex){
