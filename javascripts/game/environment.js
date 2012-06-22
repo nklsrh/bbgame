@@ -44,6 +44,7 @@ function Environment() {
 	}
   
   this.Draw = function(){
+    CTX.fillStyle = '#002634';
     for(x = 0; x < this.tileCount; x++){
       this.tiles[x].Draw();
     }
