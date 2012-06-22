@@ -11,7 +11,7 @@ function main(){
 
 var FPS = 60;
 
-var SCALING = 1;
+var SCALING = 0.5;
 var CANVAS = document.getElementById('gameCanvas');
 var CTX = CANVAS.getContext('2d');
 var CANVAS_WIDTH = 768 * SCALING;
