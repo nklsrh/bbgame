@@ -78,8 +78,8 @@ function Tile() {
     if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * CAMERA_ZOOM * PLAYER_SIZE) {
       //CTX.fillStyle = '#88C425';
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
-      CTX.fillStyle = '#BEF202';
-      CTX.fillRect((this.position.x - this.size/2) + this.size * 0.025, (this.position.z - this.size/2) + this.size * 0.025, this.size * 0.975, this.size * 0.975);
+      //CTX.fillStyle = '#BEF202';
+      //CTX.fillRect((this.position.x - this.size/2) + this.size * 0.025, (this.position.z - this.size/2) + this.size * 0.025, this.size * 0.975, this.size * 0.975);
       CTX.fillStyle = '#002634';
       CTX.fillRect((this.position.x - this.size/2) + this.size * 0.05, (this.position.z - this.size/2) + this.size * 0.05, this.size * 0.925, this.size * 0.925);        
     }
