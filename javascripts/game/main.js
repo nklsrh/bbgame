@@ -5,7 +5,7 @@ function main(){
 	game.Setup();
 	
   document.body.appendChild( stats.domElement );
-	setInterval(game.Update, 960/FPS);
+	//setInterval(game.Update, 960/FPS);
 	game.Draw();
 }
 
@@ -19,7 +19,7 @@ var CANVAS_HEIGHT = 512 * SCALING;
 CANVAS.width = CANVAS_WIDTH;
 CANVAS.height = CANVAS_HEIGHT;
 
-var NUMBER_OF_ROWS = 5;
+var NUMBER_OF_ROWS = 3;
 var NUMBER_OF_TILES = NUMBER_OF_ROWS * NUMBER_OF_ROWS;
 var TILE_SIZE = 512/NUMBER_OF_ROWS  * SCALING;
 

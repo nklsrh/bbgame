@@ -20,7 +20,8 @@ function Game(){
   }
   this.Draw = function(){   
     stats.begin();
-    game.DrawGame();    
+    game.Update();
+    game.DrawGame();     
     stats.end();
     requestAnimationFrame(game.Draw);		
   }
@@ -36,8 +37,7 @@ function Game(){
     this.glados.Update();
     this.rules.Update();    
   }
-  this.DrawGame = function(){
-    CANVAS.width = CANVAS.width;
+  this.DrawGame = function(){    
     //this.lights.Draw();
     this.env.Draw();
     this.glados.Draw();
