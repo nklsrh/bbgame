@@ -5,13 +5,13 @@ function main(){
 	game.Setup();
 	
   document.body.appendChild( stats.domElement );
-	//setInterval(game.Update, 960/FPS);
+	setInterval(game.Update, 960/FPS);
 	game.Draw();
 }
 
 var FPS = 60;
 
-var SCALING = 2;
+var SCALING = 1;
 var CANVAS = document.getElementById('gameCanvas');
 var CTX = CANVAS.getContext('2d');
 var CANVAS_WIDTH = 512 * SCALING;
