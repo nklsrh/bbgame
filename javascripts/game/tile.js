@@ -4,11 +4,13 @@ function Tile() {
   this.modelIndex;
   
   this.position = new THREE.Vector3(0,0,0);
-  this.rotation = new THREE.Vector3(0,0,0);
+  this.rotation = new THREE.Vector3(0,1,0);
   this.targetRotation = 0;
+  this.rotationComplete = false;
   
   this.hasModelLoaded = false;
-  this.type = game.env.TileTypes.NORMAL;
+  this.type = game.env.TileTypes.HOLE;
+  this.prevType = game.env.TileTypes.HOLE;
   this.index;
   
   this.hasPlayer = new Array();
@@ -19,11 +21,15 @@ function Tile() {
     NUMBER_OF_OBJECTS++;
     this.environment = ParentEnvironment;
     this.index = index;    
-    this.modelIndex = (this.index) + NUMBER_OF_ARENA_OBJECTS;    
-    this.rotation.x = -90 * Math.PI/180;
+    this.modelIndex = (this.index) + NUMBER_OF_ARENA_OBJECTS;   
+    this.targetRotation = 0.64;
     
     if(this.index == game.env.goalTile){
       this.type = game.env.TileTypes.GOAL;
+      this.prevType = game.env.TileTypes.HOLE;
+    } else {
+      this.type = game.env.TileTypes.NORMAL;
+      this.prevType = game.env.TileTypes.HOLE;
     }
   }
 
@@ -31,7 +37,7 @@ function Tile() {
     if(TILES_LOADED){
       this.TypeRotate();
       this.AlignToGrid();
-      this.AlignHole();  
+      this.AlignHole();        
     }
   }
   
@@ -41,6 +47,10 @@ function Tile() {
   }
   
   this.TypeRotate = function(){
+    this.RandomizeType();
+    if(this.rotationComplete){
+      this.prevType = this.type;
+    }
     switch(this.type){
       case game.env.TileTypes.NORMAL:
         this.targetRotation = 0;
@@ -56,10 +66,17 @@ function Tile() {
       break;
       case game.env.TileTypes.GOAL:
         this.targetRotation = 90 * Math.PI / 180;
-        this.GoalBlink();
+        //this.GoalBlink();
       break;
     }  
     this.rotation.y += (this.targetRotation - this.rotation.y)/5;
+    if(Math.abs(this.targetRotation - this.rotation.y) < 0.01){
+      this.rotationComplete = true;
+    }
+  }
+  
+  this.RandomizeType = function(){
+    // STUB
   }
   
   this.AlignHole = function(){
@@ -74,7 +91,8 @@ function Tile() {
     this.blinkValue = Math.abs(Math.cos(game.rules.time * 0.2));
   }
 	
-  this.Draw = function(){    
+  this.Draw = function(){  
+    if(this.type != this.prevType){
     //if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 4 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 4) {
       //CTX.fillStyle = COLOUR_WHITE;
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
@@ -82,8 +100,21 @@ function Tile() {
       //CTX.fillRect((this.position.x - this.size/2) + this.size * 0.025, (this.position.z - this.size/2) + this.size * 0.025, this.size * 0.975, this.size * 0.975);
       //this.setTileDrawColour();
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
-      CTX.drawImage(game.assets.tile_white, (this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
+      CTX.drawImage(this.setTileImage(), (this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
     //}
+    }
+  }
+  this.setTileImage = function(){
+    i = new Image();
+    switch(this.type){
+      case game.env.TileTypes.NORMAL:
+        i = game.assets.tile_white;
+      break;
+      case game.env.TileTypes.GOAL:
+        i = game.assets.tile_purple;
+      break; 
+    }
+    return i;
   }
 	// SWEET LITTLE FUNCTIONS	//
   this.setTileDrawColour = function(){
