@@ -6,7 +6,7 @@ function Game(){
   
   this.rules = new Rules();
   //this.lights = new Lights();
-  //this.camera = new Camera();
+  this.camera = new Camera();
   
   this.Setup = function(){
     this.assets.Setup();
@@ -32,7 +32,7 @@ function Game(){
   }
   this.UpdateGame = function(){
     HandleInput();
-    //this.camera.Update();
+    this.camera.Update();
     this.env.Update();
     this.glados.Update();
     this.rules.Update();    
@@ -41,6 +41,6 @@ function Game(){
     //this.lights.Draw();
     this.env.Draw();
     this.glados.Draw();
-    //this.camera.Draw();
+    this.camera.Draw();
   }
 }
