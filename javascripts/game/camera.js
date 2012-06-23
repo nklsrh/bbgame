@@ -1,5 +1,5 @@
 var CAMERA_ZOOM = 1.2;
-var ASPECT_RATIO = 16/9;
+var ASPECT_RATIO = window.innerWidth/window.innerHeight;
 
 function Camera(){
   this.position = new THREE.Vector3(0,0,0);
@@ -11,7 +11,8 @@ function Camera(){
   }
   
   this.Draw = function(){
-    C_CANVAS.width = C_CANVAS.width;
+    //C_CANVAS.width = C_CANVAS.width;
+    //C_CTX.clearRect(0,0, C_CANVAS.width, C_CANVAS.height);
     C_CTX.drawImage(CANVAS, -this.position.x + CANVAS_WIDTH/2*ASPECT_RATIO/CAMERA_ZOOM, -this.position.z + CANVAS_HEIGHT/2/CAMERA_ZOOM, CANVAS_WIDTH, CANVAS_HEIGHT);
   }
 }

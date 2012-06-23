@@ -74,24 +74,31 @@ function Tile() {
     this.blinkValue = Math.abs(Math.cos(game.rules.time * 0.2));
   }
 	
-  this.Draw = function(){
-    switch(this.type){
-      case game.env.TileTypes.NORMAL:
-      CTX.fillStyle = '#002634';
-      break;
-      case game.env.TileTypes.GOAL:
-      CTX.fillStyle = '#FF7000';
-      break; 
-    }
+  this.Draw = function(){    
     //if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 4 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 4) {
-      //CTX.fillStyle = '#88C425';
-      //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
+      CTX.fillStyle = COLOUR_WHITE;
+      CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
       //CTX.fillStyle = '#BEF202';
       //CTX.fillRect((this.position.x - this.size/2) + this.size * 0.025, (this.position.z - this.size/2) + this.size * 0.025, this.size * 0.975, this.size * 0.975);
+      this.setTileDrawColour();
       CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
     //}
   }
-	// SWEET LITTLE FUNCTIONS	//	
+	// SWEET LITTLE FUNCTIONS	//
+  this.setTileDrawColour = function(){
+    switch(this.type){
+      case game.env.TileTypes.NORMAL:
+        if(CTX.fillStyle != COLOUR_DARKISH_BLUE){
+          CTX.fillStyle = COLOUR_DARKISH_BLUE;
+        }
+      break;
+      case game.env.TileTypes.GOAL:
+        if(CTX.fillStyle != COLOUR_LIGHT_ORANGE){
+          CTX.fillStyle = COLOUR_LIGHT_ORANGE;
+        }
+      break; 
+    }
+  }
 	this.SetAsCurrentTile = function(playerIndex){
 		this.hasPlayer[playerIndex] = true;
 	}
@@ -99,3 +106,9 @@ function Tile() {
 		this.hasPlayer[playerIndex] = false;
 	}
 }
+
+// COLOURS!
+var COLOUR_WHITE = '#fff';
+var COLOUR_LIGHT_ORANGE = '#FF7000';
+var COLOUR_DARKISH_BLUE = '#002634';
+var COLOUR_DARK_ORANGE = '#FF4000';

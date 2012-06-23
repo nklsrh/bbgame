@@ -19,7 +19,7 @@ function Glados() {
 	}
 
 	this.Draw = function(){		
-    CTX.fillStyle = '#ff4000';
+    CTX.fillStyle = COLOUR_DARK_ORANGE;
     for(x = 0; x < this.playerCount; x++){
       this.players[x].Draw();
     }  
