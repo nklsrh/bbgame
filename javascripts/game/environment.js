@@ -32,8 +32,8 @@ function Environment() {
 
 	this.Update = function(){    
     if(ARENA_LOADED){
-      this.position.x = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;
-      this.position.y = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;   
+      //this.position.x = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;
+      //this.position.y = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;   
            
     }
     if(TILES_LOADED){
