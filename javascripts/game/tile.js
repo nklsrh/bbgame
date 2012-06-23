@@ -47,10 +47,17 @@ function Tile() {
   }
   
   this.TypeRotate = function(){
-    this.RandomizeType();
+    //this.RandomizeType();
     if(this.rotationComplete){
       this.prevType = this.type;
+    }    
+    this.rotation.y += (this.targetRotation - this.rotation.y)/5;
+    if(Math.abs(this.targetRotation - this.rotation.y) < 0.01){
+      this.rotationComplete = true;
     }
+  }
+  
+  this.SetTargetRotation = function(){
     switch(this.type){
       case game.env.TileTypes.NORMAL:
         this.targetRotation = 0;
@@ -69,14 +76,11 @@ function Tile() {
         //this.GoalBlink();
       break;
     }  
-    this.rotation.y += (this.targetRotation - this.rotation.y)/5;
-    if(Math.abs(this.targetRotation - this.rotation.y) < 0.01){
-      this.rotationComplete = true;
-    }
   }
   
   this.RandomizeType = function(){
     // STUB
+    
   }
   
   this.AlignHole = function(){
