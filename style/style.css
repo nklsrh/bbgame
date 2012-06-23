@@ -10,21 +10,6 @@ body {
   padding: 0;
 }
 
-#cameraCanvas {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  width: 100%;
-  height: 100%;
-  overflow:hidden;
-  padding: 0px;
-  margin: 0px;
-  z-index: 20;
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
 #gameCanvas {
   position: absolute;
   top: 0px;
@@ -37,20 +22,4 @@ body {
   padding: 0px;
   margin: 0px;
   z-index: 10;
-  display: none;
-}
-
-#backgroundCanvas {
-  background-color: #000;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  width: 100%;
-  height: 100%;
-  overflow:hidden;
-  padding: 0px;
-  margin: 0px;
-  z-index: 5;
 }

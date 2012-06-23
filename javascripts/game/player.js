@@ -261,7 +261,7 @@ function Player(){
     // ALIASED
     //CTX.drawImage(game.assets.hydrogen, Math.floor(this.position.x - this.size), Math.floor(this.position.z - this.size), Math.floor(this.size * 2), Math.floor(this.size * 2));
     // ANTI-ALIASED
-    CTX.drawImage(game.assets.hydrogen, this.position.x - this.size, this.position.z - this.size, (this.size * 2), (this.size * 2));
+    CTX.drawImage(game.assets.hydrogen, game.camera.offset.x + (this.position.x - this.size * CAMERA_ZOOM), game.camera.offset.z + (this.position.z - this.size * CAMERA_ZOOM), (this.size * 2) * CAMERA_ZOOM, (this.size * 2) * CAMERA_ZOOM);
   }
   
   this.Reset = function(){

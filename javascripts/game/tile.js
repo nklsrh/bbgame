@@ -96,7 +96,7 @@ function Tile() {
   }
 	
   this.Draw = function(){  
-    if(this.type != this.prevType){
+    //if(this.type != this.prevType){
     //if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 4 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 4) {
       //CTX.fillStyle = COLOUR_WHITE;
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
@@ -104,28 +104,26 @@ function Tile() {
       //CTX.fillRect((this.position.x - this.size/2) + this.size * 0.025, (this.position.z - this.size/2) + this.size * 0.025, this.size * 0.975, this.size * 0.975);
       //this.setTileDrawColour();
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
-      CTX.drawImage(this.setTileImage(), (this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
+      CTX.drawImage(this.setTileImage(), game.camera.offset.x + (this.position.x - this.size/2 * CAMERA_ZOOM), game.camera.offset.z + (this.position.z - this.size/2 * CAMERA_ZOOM), (this.size) * CAMERA_ZOOM, (this.size) * CAMERA_ZOOM);    //}
     //}
-    }
+    //}
   }
   this.setTileImage = function(){
-    i = new Image();
     switch(this.type){
       case game.env.TileTypes.NORMAL:
-        i = game.assets.tile_white;
+        return game.assets.tile_white;
       break;
       case game.env.TileTypes.GOAL:
-        i = game.assets.tile_purple;
+        return game.assets.tile_purple;
       break; 
     }
-    return i;
   }
 	// SWEET LITTLE FUNCTIONS	//
   this.setTileDrawColour = function(){
     switch(this.type){
       case game.env.TileTypes.NORMAL:
         if(CTX.fillStyle != COLOUR_DARKISH_BLUE){
-          CTX.fillStyle = COLOUR_DARKISH_BLUE;
+          CTX.fillStyle = COLOsdUR_DARKISH_BLUE;
         }
       break;
       case game.env.TileTypes.GOAL:

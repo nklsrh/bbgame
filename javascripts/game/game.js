@@ -37,7 +37,8 @@ function Game(){
     this.glados.Update();
     this.rules.Update();    
   }
-  this.DrawGame = function(){    
+  this.DrawGame = function(){   
+    CANVAS.width = CANVAS.width;
     //this.lights.Draw();
     this.env.Draw();
     this.glados.Draw();

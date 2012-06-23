@@ -7,6 +7,6 @@ function Rules(){
   }
   
   this.Update = function(){
-  
+    this.globalTime++;
   }
 }
