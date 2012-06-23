@@ -20,7 +20,7 @@ function Game(){
   }
   this.Draw = function(){   
     stats.begin();
-    //game.Update();
+    game.Update();
     game.DrawGame();     
     stats.end();
     requestAnimationFrame(game.Draw);		

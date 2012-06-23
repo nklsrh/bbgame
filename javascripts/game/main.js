@@ -5,7 +5,7 @@ function main(){
 	game.Setup();
 	
   document.body.appendChild( stats.domElement );
-	setInterval(game.Update, 960/FPS);
+	//setInterval(game.Update, 960/FPS);
 	game.Draw();
 }
 
