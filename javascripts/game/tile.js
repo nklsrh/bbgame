@@ -97,7 +97,7 @@ function Tile() {
 	
   this.Draw = function(){  
     //if(this.type != this.prevType){
-    //if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 4 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 4) {
+    if(Math.abs(this.position.x - game.glados.players[0].position.x) < TILE_SIZE * 3 && Math.abs(this.position.z - game.glados.players[0].position.z) < TILE_SIZE * 3) {
       //CTX.fillStyle = COLOUR_WHITE;
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
       //CTX.fillStyle = '#BEF202';
@@ -106,7 +106,7 @@ function Tile() {
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);        
       CTX.drawImage(this.setTileImage(), game.camera.offset.x + (this.position.x - this.size/2 * CAMERA_ZOOM), game.camera.offset.z + (this.position.z - this.size/2 * CAMERA_ZOOM), (this.size) * CAMERA_ZOOM, (this.size) * CAMERA_ZOOM);    //}
     //}
-    //}
+    }
   }
   this.setTileImage = function(){
     switch(this.type){
