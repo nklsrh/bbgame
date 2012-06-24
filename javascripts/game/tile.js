@@ -102,7 +102,7 @@ function Tile() {
       //CTX.fillRect((this.position.x - this.size/2), (this.position.z - this.size/2), this.size, this.size);
       //CTX.fillStyle = '#BEF202';
       //CTX.fillRect((this.position.x - this.size/2) + this.size * 0.025, (this.position.z - this.size/2) + this.size * 0.025, this.size * 0.975, this.size * 0.975);
-      this.setTileDrawColour();
+      //this.setTileDrawColour();
       CTX.fillRect(game.camera.offset.x + (this.position.x - this.size/2 * CAMERA_ZOOM), game.camera.offset.z + (this.position.z - this.size/2 * CAMERA_ZOOM), (this.size) * CAMERA_ZOOM, (this.size) * CAMERA_ZOOM);
       //CTX.drawImage(this.setTileImage(), game.camera.offset.x + (this.position.x - this.size/2 * CAMERA_ZOOM), game.camera.offset.z + (this.position.z - this.size/2 * CAMERA_ZOOM), (this.size) * CAMERA_ZOOM, (this.size) * CAMERA_ZOOM);    //}
     //}

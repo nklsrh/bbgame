@@ -8,7 +8,7 @@ function Environment() {
   
   this.position = new THREE.Vector3(0,0,0);  
   this.modelIndex;
-  this.hasModelLoaded = false;
+  this.hasModelLoaded = false;  
   
 	this.TileTypes = {
 		NORMAL : "NORMAL",
@@ -36,7 +36,7 @@ function Environment() {
       //this.position.y = Math.floor(NUMBER_OF_ROWS/2) * TILE_SIZE;   
            
     }
-    if(TILES_LOADED){
+    if(TILES_LOADED){      
       for(x = 0; x < this.tileCount; x++){
         this.tiles[x].Update();
       }

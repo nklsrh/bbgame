@@ -40,6 +40,7 @@ function Game(){
   this.DrawGame = function(){   
     CANVAS.width = CANVAS.width;
     //this.lights.Draw();
+    CTX.fillStyle = COLOUR_LIGHT_ORANGE;
     this.env.Draw();
     this.glados.Draw();
     this.camera.Draw();
